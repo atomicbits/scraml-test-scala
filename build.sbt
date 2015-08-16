@@ -6,8 +6,8 @@ version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.11.5"
 
-// Sonatype snapshot resolver is needed to fetch rxhttpclient-scala_2.11:0.2.0-SNAPSHOT.
-// resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+// Sonatype snapshot resolver is needed to fetch SNAPSHOT releases of scraml
+ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.1" % "test" withSources() withJavadoc(),
@@ -16,4 +16,3 @@ libraryDependencies ++= Seq(
 )
 
 scramlRamlApi in scraml in Compile := "io/atomicbits/scraml/TestClient01.raml"
-
