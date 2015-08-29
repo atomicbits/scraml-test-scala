@@ -1,6 +1,7 @@
 package io.atomicbits.scraml.template
 
 import io.atomicbits.scraml.TestClient01
+import io.atomicbits.scraml.TestClient01._
 
 
 object HelloWorld {

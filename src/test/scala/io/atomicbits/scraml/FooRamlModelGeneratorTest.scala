@@ -22,12 +22,11 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
+import io.atomicbits.schema.{UserDefinitionsAddress, Link, User}
 import io.atomicbits.scraml.dsl.StringPart
-import io.atomicbits.scraml.TestClient01
 import io.atomicbits.scraml.TestClient01._
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
 import play.api.libs.json.Format
-import play.libs.Json
 
 import scala.concurrent.{Await, Future}
 import scala.language.{postfixOps, reflectiveCalls}
@@ -86,7 +85,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val user = User(
         homePage = None,
-        address = Some(Address("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
@@ -138,7 +137,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val user = User(
         homePage = Some(Link("http://foo.bar", "GET", None)),
-        address = Some(Address("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
@@ -175,11 +174,10 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val eventualPutResponse: Future[Link] =
         userFoobarResource
-          .put(user)
-          .headers(
+          .withHeaders(
             "Content-Type" -> "application/vnd-v1.0+json",
-            "Accept" -> "application/vnd-v1.0+json"
-          )
+            "Accept" -> "application/vnd-v1.0+json")
+          .put(user)
           .call().asType
 
 
@@ -247,7 +245,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val user = User(
         homePage = Some(Link("http://foo.bar", "GET", None)),
-        address = Some(Address("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
@@ -278,8 +276,8 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       When("a request with list body happens")
       val listBodyResponse =
         client.rest.user.activate
+          .withHeader("Content-Type" -> "application/vnd-v1.0+json")
           .put(List(user))
-          .headers("Content-Type" -> "application/vnd-v1.0+json")
           .call().asType
 
       Then("we should get the correct response")
