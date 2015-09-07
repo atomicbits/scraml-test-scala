@@ -276,7 +276,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       When("a request with list body happens")
       val listBodyResponse =
         client.rest.user.activate
-          .withHeader("Content-Type" -> "application/vnd-v1.0+json")
+          .withHeaders("Content-Type" -> "application/vnd-v1.0+json")
           .put(List(user))
           .call().asType
 
