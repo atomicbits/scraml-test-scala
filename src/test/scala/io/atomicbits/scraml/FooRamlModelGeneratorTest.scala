@@ -22,9 +22,10 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
-import io.atomicbits.schema.{UserDefinitionsAddress, Link, User}
+import io.atomicbits.schema._
 import io.atomicbits.scraml.dsl.StringPart
 import io.atomicbits.scraml.TestClient01._
+import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
 import play.api.libs.json.Format
 
@@ -54,8 +55,14 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
   feature("Use the DSL based on a RAML specification") {
 
-    val client = TestClient01(host = host, port = port,
-      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"))
+    val client = new TestClient01(
+      host = host,
+      port = port,
+      protocol = "http",
+      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"),
+      prefix = None,
+      config = ClientConfig()
+    )
 
     val userResource = client.rest.user
     val userFoobarResource = userResource.userid("foobar")
@@ -283,6 +290,37 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       Then("we should get the correct response")
       val listBody = Await.result(listBodyResponse, 2 seconds)
       assertResult(List(user))(listBody)
+
+    }
+
+    scenario("test the use of a class hierarchy") {
+
+      Given("a web service providing a dog as an animal")
+      val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
+
+      def dogToJson()(implicit formatter: Format[Animal]) = {
+        formatter.writes(dog).toString()
+      }
+
+      stubFor(
+        get(urlEqualTo(s"/rest/animals"))
+          .willReturn(
+            aResponse()
+              .withBody(dogToJson())
+              .withStatus(200)
+          )
+      )
+
+
+      When("web service requesting an animal")
+      val eventualAnimal = client.rest.animals.get().call().asType
+
+
+      Then("we should get a dog")
+      val animal: Animal = Await.result(eventualAnimal, 2 seconds)
+      assertResult(animal)(dog)
+
+      // println(s"animal: $animal")
 
     }
 
