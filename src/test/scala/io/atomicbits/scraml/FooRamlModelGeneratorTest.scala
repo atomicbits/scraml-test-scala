@@ -143,7 +143,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       Given("a matching web service")
 
       val user = User(
-        homePage = Some(Link("http://foo.bar", "GET", None)),
+        homePage = Some(Link("http://foo.bar", LinkMethod.GET, None)),
         address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
@@ -151,7 +151,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
         id = "1"
       )
 
-      val link = Link("http://foo.bar", "GET", None)
+      val link = Link("http://foo.bar", LinkMethod.GET, None)
 
       import User._
       import Link._
@@ -251,7 +251,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       Given("a form upload web service")
 
       val user = User(
-        homePage = Some(Link("http://foo.bar", "GET", None)),
+        homePage = Some(Link("http://foo.bar", LinkMethod.GET, None)),
         address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
