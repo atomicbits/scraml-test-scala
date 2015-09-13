@@ -37,7 +37,7 @@ import scala.concurrent.duration._
 /**
  * Created by peter on 17/05/15, Atomic BITS bvba (http://atomicbits.io). 
  */
-class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeAndAfterAll {
+class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeAndAfterAll {
 
   val port = 8281
   val host = "localhost"
@@ -181,9 +181,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val eventualPutResponse: Future[Link] =
         userFoobarResource
-          .withHeaders(
-            "Content-Type" -> "application/vnd-v1.0+json",
-            "Accept" -> "application/vnd-v1.0+json")
+          ._contentApplicationVndV10Json._acceptApplicationVndV10Json
           .put(user)
           .call().asType
 
