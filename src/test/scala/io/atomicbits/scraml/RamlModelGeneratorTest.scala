@@ -181,7 +181,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualPutResponse: Future[Link] =
         userFoobarResource
-          ._contentApplicationVndV10Json._acceptApplicationVndV10Json
+          ._contentApplicationVndV10Json
           .put(user)
           .call().asType
 
