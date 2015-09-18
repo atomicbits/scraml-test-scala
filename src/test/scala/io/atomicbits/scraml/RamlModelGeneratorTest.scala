@@ -85,7 +85,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       val eventualUserResponse: Future[User] =
         userResource
           .get(age = Some(51), firstName = Some("John"), lastName = None, organization = List("ESA", "NASA"))
-          .call().asType
+          .asType
 
 
       Then("we should get the correct user object")
@@ -126,7 +126,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualPostResponse: Future[String] =
         userFoobarResource
-          .post(text = "Hello Foobar", value = None).call().asString
+          .post(text = "Hello Foobar", value = None).asString
 
 
 
@@ -183,7 +183,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         userFoobarResource
           ._contentApplicationVndV10Json
           .put(user)
-          .call().asType
+          .asType
 
 
       Then("we should get the correct response")
@@ -211,7 +211,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("execute a DELETE request")
 
-      val eventualPutResponse: Future[String] = userFoobarResource.delete().call().asString
+      val eventualPutResponse: Future[String] = userFoobarResource.delete().asString
 
 
       Then("we should get the correct response")
@@ -237,7 +237,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("a multipart/form-data POST request happens")
       val multipartFormPostResponse =
-        client.rest.user.upload.post(List(StringPart(name = "test", value = "string part value"))).call().asType
+        client.rest.user.upload.post(List(StringPart(name = "test", value = "string part value"))).asType
 
       Then("we should get the correct response")
 
@@ -281,9 +281,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       When("a request with list body happens")
       val listBodyResponse =
         client.rest.user.activate
-          .withHeaders("Content-Type" -> "application/vnd-v1.0+json")
+          .addHeaders("Content-Type" -> "application/vnd-v1.0+json")
           .put(List(user))
-          .call().asType
+          .asType
 
       Then("we should get the correct response")
       val listBody = Await.result(listBodyResponse, 2 seconds)
@@ -311,7 +311,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
 
       When("web service requesting an animal")
-      val eventualAnimal = client.rest.animals.get().call().asType
+      val eventualAnimal = client.rest.animals.get().asType
 
 
       Then("we should get a dog")
@@ -319,6 +319,42 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(animal)(dog)
 
       // println(s"animal: $animal")
+
+    }
+
+    scenario("test the use generic classes") {
+
+      Given("a web service providing the dogs of a user")
+      val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
+      val pagedList = PagedList[Dog, String](count = 1, elements = List(dog), owner = Option("Peter"))
+
+      /**
+       * val json = s"""{"count":1,"elements":[{"gender":"female","canBark":true,"name":"Ziva"}],"owner":"Peter"}"""
+       */
+      def pagedListToJson()(implicit formatter: Format[PagedList[Dog, String]]) = {
+        formatter.writes(pagedList).toString()
+      }
+
+
+      stubFor(
+        get(urlEqualTo(s"/rest/user/123/dogs"))
+          .willReturn(
+            aResponse()
+              .withBody(pagedListToJson())
+              .withStatus(200)
+          )
+      )
+
+
+      When("web service requesting the dogs of a user")
+      val eventualDogs = client.rest.user.userid("123").dogs.get().asType
+
+
+      Then("we should get a paged list containing the dogs of the requested user")
+      val dogs: PagedList[Dog, String] = Await.result(eventualDogs, 2 seconds)
+      assertResult(dogs)(pagedList)
+
+      println(s"dogs: $dogs")
 
     }
 

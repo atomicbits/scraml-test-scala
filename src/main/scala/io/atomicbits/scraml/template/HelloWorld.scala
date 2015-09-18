@@ -24,7 +24,6 @@ object HelloWorld {
 
     client.rest.user
       .get(age = Some(51), firstName = Some("John"), lastName = None, organization = List("ESA", "NASA"))
-      .call()
       .asType
   }
 
