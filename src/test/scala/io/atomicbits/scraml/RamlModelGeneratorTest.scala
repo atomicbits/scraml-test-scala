@@ -143,7 +143,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("a matching web service")
 
       val user = User(
-        homePage = Some(Link("http://foo.bar", LinkMethod.GET, None)),
+        homePage = Some(Link("http://foo.bar", Method.GET, None)),
         address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
@@ -151,7 +151,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         id = "1"
       )
 
-      val link = Link("http://foo.bar", LinkMethod.GET, None)
+      val link = Link("http://foo.bar", Method.GET, None)
 
       import User._
       import Link._
@@ -224,10 +224,12 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     scenario("test a multipart/form-data POST request") {
 
+      // http://localhost:8281/rest/user/upload	POST	headers:	Accept:application/vnd-v1.0+json	Content-Type:multipart/form-data
       Given("a form upload web service")
       stubFor(
         post(urlEqualTo(s"/rest/user/upload"))
           .withHeader("Content-Type", equalTo("multipart/form-data"))
+          .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
               .withBody("Post OK")
@@ -241,7 +243,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       Then("we should get the correct response")
 
-
+//      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
+//      assertResult("Post OK")(putResponse)
     }
 
     scenario("test Lists as request and response body") {
@@ -249,7 +252,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("a form upload web service")
 
       val user = User(
-        homePage = Some(Link("http://foo.bar", LinkMethod.GET, None)),
+        homePage = Some(Link("http://foo.bar", Method.GET, None)),
         address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
         age = 21,
         firstName = "John",
