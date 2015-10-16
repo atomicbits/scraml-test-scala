@@ -222,6 +222,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
+
     scenario("test a multipart/form-data POST request") {
 
       // http://localhost:8281/rest/user/upload	POST	headers:	Accept:application/vnd-v1.0+json	Content-Type:multipart/form-data
@@ -243,9 +244,10 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       Then("we should get the correct response")
 
-//      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
-//      assertResult("Post OK")(putResponse)
+      //      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
+      //      assertResult("Post OK")(putResponse)
     }
+
 
     scenario("test Lists as request and response body") {
 
@@ -294,6 +296,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
+
     scenario("test the use of a class hierarchy") {
 
       Given("a web service providing a dog as an animal")
@@ -324,6 +327,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       // println(s"animal: $animal")
 
     }
+
 
     scenario("test the use generic classes") {
 
@@ -361,6 +365,32 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
+
+    scenario("get a tree structure") {
+
+      Given("a service that returns a tree structure")
+
+      stubFor(
+        get(urlEqualTo(s"/rest/user/tree"))
+          .willReturn(
+            aResponse()
+              .withBody( """{"value":"foo","children":[{"value":"bar","children":[]},{"value":"baz","children":[]}]}""")
+              .withStatus(200)
+          )
+      )
+
+
+      When("a client requests the tree")
+
+      val eventualTree = client.rest.user.tree.get().asType
+
+      Then("then the right tree should be received")
+
+      val expectedTree = Tree(value = "foo", children = List(Tree(value = "bar", children = List()), Tree(value = "baz", children = List())))
+      val receivedTree = Await.result(eventualTree, 2 seconds)
+      println(s"tree: $receivedTree")
+      assertResult(expectedTree)(receivedTree)
+    }
 
   }
 

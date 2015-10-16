@@ -1,0 +1,13 @@
+language: scala
+scala:
+- 2.11.7
+script: sbt clean test
+jdk:
+- oraclejdk8
+notifications:
+  email:
+    recipients:
+    - peter.rigole@atomicbits.io
+
+env:
+  global:
