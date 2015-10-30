@@ -211,13 +211,13 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("execute a DELETE request")
 
-      val eventualPutResponse: Future[String] = userFoobarResource.delete().asString
+      val eventualDeleteResponse: Future[String] = userFoobarResource.delete().asString
 
 
       Then("we should get the correct response")
 
-      val putResponse = Await.result(eventualPutResponse, 2 seconds)
-      assertResult("Delete OK")(putResponse)
+      val deleteResponse = Await.result(eventualDeleteResponse, 2 seconds)
+      assertResult("Delete OK")(deleteResponse)
 
 
     }
