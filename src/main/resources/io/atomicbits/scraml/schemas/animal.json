@@ -4,6 +4,12 @@
   "type": "object",
   "typeDiscriminator": "_type",
   "description": "An animal object.",
+  "properties": {
+    "gender": {
+      "required": true,
+      "type": "string"
+    }
+  },
   "oneOf": [
     {
       "properties": {
@@ -11,10 +17,6 @@
           "enum": [
             "Cat"
           ]
-        },
-        "gender": {
-          "required": true,
-          "type": "string"
         },
         "name": {
           "required": false,
@@ -30,10 +32,6 @@
           "enum": [
             "Dog"
           ]
-        },
-        "gender": {
-          "required": true,
-          "type": "string"
         },
         "name": {
           "required": false,
@@ -51,10 +49,6 @@
           "enum": [
             "Fish"
           ]
-        },
-        "gender": {
-          "required": true,
-          "type": "string"
         }
       }
     }

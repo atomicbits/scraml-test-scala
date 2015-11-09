@@ -76,13 +76,13 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
-              .withBody( """{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}""")
+              .withBody( """[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}]""")
               .withStatus(200)))
 
 
       When("execute a GET request")
 
-      val eventualUserResponse: Future[User] =
+      val eventualUserResponse: Future[List[User]] =
         userResource
           .get(age = Some(51), firstName = Some("John"), lastName = None, organization = List("ESA", "NASA"))
           .asType
@@ -99,7 +99,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         id = "1"
       )
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
-      assertResult(user)(userResponse)
+      assertResult(user)(userResponse.head)
 
     }
 

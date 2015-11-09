@@ -19,7 +19,14 @@
       200:
         body:
           application/vnd-v1.0+json:
-            schema: user
+            schema: |
+              {
+                "id": "http://atomicbits.io/schema/anonymous1.json",
+                "type": "array",
+                "items": {
+                  "$ref": "user.json"
+                }
+              }
 
 /upload:
   post:
