@@ -72,7 +72,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("a matching web service")
 
       stubFor(
-        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John&organization=ESA&organization=NASA"))
+        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization=ESA&organization=NASA"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
@@ -84,7 +84,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualUserResponse: Future[List[User]] =
         userResource
-          .get(age = Some(51), firstName = Some("John"), lastName = None, organization = List("ESA", "NASA"))
+          .get(age = Some(51), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
           .asType
 
 
@@ -92,7 +92,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val user = User(
         homePage = None,
-        address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
@@ -144,7 +144,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val user = User(
         homePage = Some(Link("http://foo.bar", Method.GET, None)),
-        address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
@@ -181,7 +181,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualPutResponse: Future[Link] =
         userFoobarResource
-          ._contentApplicationVndV10Json
+          .contentApplicationVndV10Json
           .put(user)
           .asType
 
@@ -255,7 +255,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val user = User(
         homePage = Some(Link("http://foo.bar", Method.GET, None)),
-        address = Some(UserDefinitionsAddress("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
