@@ -4,10 +4,16 @@ title: test01
 version: v1
 
 schemas:
-  - link:     !include schemas/link.json
-  - user:     !include schemas/user.json
+  - link:         !include schemas/link.json
+  - method:       !include schemas/method.json
+  - user:         !include schemas/user.json
+  - animal:       !include schemas/animal.json
+  - paged-list:   !include schemas/paged-list.json
+  - tree:         !include schemas/tree.json
 
 
 /rest/user:
   !include user.raml
 
+/rest/animals:
+  !include animals.raml

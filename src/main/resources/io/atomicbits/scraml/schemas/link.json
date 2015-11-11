@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "id": "http://atomicbits.io/schema/link.json#",
   "type": "object",
-  "javaType" : "",
   "description": "A href",
   "properties": {
     "href": {
@@ -10,9 +9,8 @@
       "required": true
     },
     "method": {
-      "type": "string",
       "required": true,
-      "enum": [ "GET", "PUT", "POST", "DELETE", "HEAD", "CONNECT", "TRACE", "OPTIONS" ]
+      "$ref": "method.json"
     },
     "accept": {
       "type": "string",

@@ -22,12 +22,12 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
+import io.atomicbits.schema._
 import io.atomicbits.scraml.dsl.StringPart
-import io.atomicbits.scraml.TestClient01
 import io.atomicbits.scraml.TestClient01._
+import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
 import play.api.libs.json.Format
-import play.libs.Json
 
 import scala.concurrent.{Await, Future}
 import scala.language.{postfixOps, reflectiveCalls}
@@ -37,7 +37,7 @@ import scala.concurrent.duration._
 /**
  * Created by peter on 17/05/15, Atomic BITS bvba (http://atomicbits.io). 
  */
-class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeAndAfterAll {
+class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeAndAfterAll {
 
   val port = 8281
   val host = "localhost"
@@ -55,8 +55,14 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
   feature("Use the DSL based on a RAML specification") {
 
-    val client = TestClient01(host = host, port = port,
-      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"))
+    val client = new TestClient01(
+      host = host,
+      port = port,
+      protocol = "http",
+      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"),
+      prefix = None,
+      config = ClientConfig()
+    )
 
     val userResource = client.rest.user
     val userFoobarResource = userResource.userid("foobar")
@@ -66,34 +72,34 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       Given("a matching web service")
 
       stubFor(
-        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John&organization=ESA&organization=NASA"))
+        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization=ESA&organization=NASA"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
-              .withBody( """{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}""")
+              .withBody( """[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}]""")
               .withStatus(200)))
 
 
       When("execute a GET request")
 
-      val eventualUserResponse: Future[User] =
+      val eventualUserResponse: Future[List[User]] =
         userResource
-          .get(age = Some(51), firstName = Some("John"), lastName = None, organization = List("ESA", "NASA"))
-          .call().asType
+          .get(age = Some(51), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
+          .asType
 
 
       Then("we should get the correct user object")
 
       val user = User(
         homePage = None,
-        address = Some(Address("Mulholland Drive", "LA", "California")),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
         id = "1"
       )
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
-      assertResult(user)(userResponse)
+      assertResult(user)(userResponse.head)
 
     }
 
@@ -120,7 +126,7 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val eventualPostResponse: Future[String] =
         userFoobarResource
-          .post(text = "Hello Foobar", value = None).call().asString
+          .post(text = "Hello Foobar", value = None).asString
 
 
 
@@ -137,15 +143,15 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       Given("a matching web service")
 
       val user = User(
-        homePage = Some(Link("http://foo.bar", "GET", None)),
-        address = Some(Address("Mulholland Drive", "LA", "California")),
+        homePage = Some(Link("http://foo.bar", Method.GET, None)),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
         id = "1"
       )
 
-      val link = Link("http://foo.bar", "GET", None)
+      val link = Link("http://foo.bar", Method.GET, None)
 
       import User._
       import Link._
@@ -175,12 +181,9 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       val eventualPutResponse: Future[Link] =
         userFoobarResource
+          .contentApplicationVndV10Json
           .put(user)
-          .headers(
-            "Content-Type" -> "application/vnd-v1.0+json",
-            "Accept" -> "application/vnd-v1.0+json"
-          )
-          .call().asType
+          .asType
 
 
       Then("we should get the correct response")
@@ -208,23 +211,26 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       When("execute a DELETE request")
 
-      val eventualPutResponse: Future[String] = userFoobarResource.delete().call().asString
+      val eventualDeleteResponse: Future[String] = userFoobarResource.delete().asString
 
 
       Then("we should get the correct response")
 
-      val putResponse = Await.result(eventualPutResponse, 2 seconds)
-      assertResult("Delete OK")(putResponse)
+      val deleteResponse = Await.result(eventualDeleteResponse, 2 seconds)
+      assertResult("Delete OK")(deleteResponse)
 
 
     }
 
+
     scenario("test a multipart/form-data POST request") {
 
+      // http://localhost:8281/rest/user/upload	POST	headers:	Accept:application/vnd-v1.0+json	Content-Type:multipart/form-data
       Given("a form upload web service")
       stubFor(
         post(urlEqualTo(s"/rest/user/upload"))
           .withHeader("Content-Type", equalTo("multipart/form-data"))
+          .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
               .withBody("Post OK")
@@ -234,20 +240,22 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
       When("a multipart/form-data POST request happens")
       val multipartFormPostResponse =
-        client.rest.user.upload.post(List(StringPart(name = "test", value = "string part value"))).call().asType
+        client.rest.user.upload.post(List(StringPart(name = "test", value = "string part value"))).asType
 
       Then("we should get the correct response")
 
-
+      //      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
+      //      assertResult("Post OK")(putResponse)
     }
+
 
     scenario("test Lists as request and response body") {
 
       Given("a form upload web service")
 
       val user = User(
-        homePage = Some(Link("http://foo.bar", "GET", None)),
-        address = Some(Address("Mulholland Drive", "LA", "California")),
+        homePage = Some(Link("http://foo.bar", Method.GET, None)),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
         age = 21,
         firstName = "John",
         lastName = "Doe",
@@ -278,9 +286,9 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
       When("a request with list body happens")
       val listBodyResponse =
         client.rest.user.activate
+          .addHeaders("Content-Type" -> "application/vnd-v1.0+json")
           .put(List(user))
-          .headers("Content-Type" -> "application/vnd-v1.0+json")
-          .call().asType
+          .asType
 
       Then("we should get the correct response")
       val listBody = Await.result(listBodyResponse, 2 seconds)
@@ -288,6 +296,101 @@ class FooRamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with Befo
 
     }
 
+
+    scenario("test the use of a class hierarchy") {
+
+      Given("a web service providing a dog as an animal")
+      val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
+
+      def dogToJson()(implicit formatter: Format[Animal]) = {
+        formatter.writes(dog).toString()
+      }
+
+      stubFor(
+        get(urlEqualTo(s"/rest/animals"))
+          .willReturn(
+            aResponse()
+              .withBody(dogToJson())
+              .withStatus(200)
+          )
+      )
+
+
+      When("web service requesting an animal")
+      val eventualAnimal = client.rest.animals.get().asType
+
+
+      Then("we should get a dog")
+      val animal: Animal = Await.result(eventualAnimal, 2 seconds)
+      assertResult(animal)(dog)
+
+      // println(s"animal: $animal")
+
+    }
+
+
+    scenario("test the use generic classes") {
+
+      Given("a web service providing the dogs of a user")
+      val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
+      val pagedList = PagedList[Dog, String](count = 1, elements = List(dog), owner = Option("Peter"))
+
+      /**
+       * val json = s"""{"count":1,"elements":[{"gender":"female","canBark":true,"name":"Ziva"}],"owner":"Peter"}"""
+       */
+      def pagedListToJson()(implicit formatter: Format[PagedList[Dog, String]]) = {
+        formatter.writes(pagedList).toString()
+      }
+
+
+      stubFor(
+        get(urlEqualTo(s"/rest/user/123/dogs"))
+          .willReturn(
+            aResponse()
+              .withBody(pagedListToJson())
+              .withStatus(200)
+          )
+      )
+
+
+      When("web service requesting the dogs of a user")
+      val eventualDogs = client.rest.user.userid("123").dogs.get().asType
+
+
+      Then("we should get a paged list containing the dogs of the requested user")
+      val dogs: PagedList[Dog, String] = Await.result(eventualDogs, 2 seconds)
+      assertResult(dogs)(pagedList)
+
+      println(s"dogs: $dogs")
+
+    }
+
+
+    scenario("get a tree structure") {
+
+      Given("a service that returns a tree structure")
+
+      stubFor(
+        get(urlEqualTo(s"/rest/user/tree"))
+          .willReturn(
+            aResponse()
+              .withBody( """{"value":"foo","children":[{"value":"bar","children":[]},{"value":"baz","children":[]}]}""")
+              .withStatus(200)
+          )
+      )
+
+
+      When("a client requests the tree")
+
+      val eventualTree = client.rest.user.tree.get().asType
+
+      Then("then the right tree should be received")
+
+      val expectedTree = Tree(value = "foo", children = List(Tree(value = "bar", children = List()), Tree(value = "baz", children = List())))
+      val receivedTree = Await.result(eventualTree, 2 seconds)
+      println(s"tree: $receivedTree")
+      assertResult(expectedTree)(receivedTree)
+    }
 
   }
 
