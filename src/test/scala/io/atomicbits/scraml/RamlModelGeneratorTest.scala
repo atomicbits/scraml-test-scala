@@ -27,7 +27,7 @@ import io.atomicbits.scraml.dsl.StringPart
 import io.atomicbits.scraml.TestClient01._
 import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
-import play.api.libs.json.Format
+import play.api.libs.json.{JsString, Json, Format}
 
 import scala.concurrent.{Await, Future}
 import scala.language.{postfixOps, reflectiveCalls}
@@ -76,7 +76,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
-              .withBody( """[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}]""")
+              .withBody( """[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1", "other": {"text": "foobar"}}]""")
               .withStatus(200)))
 
 
@@ -96,11 +96,11 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         age = 21,
         firstName = "John",
         lastName = "Doe",
-        id = "1"
+        id = "1",
+        other = Some(Json.obj("text" -> JsString("foobar")))
       )
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
       assertResult(user)(userResponse.head)
-
     }
 
 

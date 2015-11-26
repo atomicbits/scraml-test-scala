@@ -38,6 +38,10 @@
     },
     "address": {
       "$ref": "#/definitions/address"
+    },
+    "other": {
+      "type": "object",
+      "properties": {}
     }
   }
 }
