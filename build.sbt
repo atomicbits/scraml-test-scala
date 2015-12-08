@@ -10,6 +10,7 @@ scalaVersion := "2.11.5"
  resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
+  "ch.qos.logback" % "logback-classic" % "1.1.1" % "test",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test" withSources() withJavadoc(),
   "org.scalacheck" %% "scalacheck" % "1.12.1" % "test" withSources() withJavadoc(),
   "com.github.tomakehurst" % "wiremock" % "1.56" % "test"
