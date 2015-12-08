@@ -28,7 +28,7 @@
                 }
               }
 
-/upload:
+/up-load:
   post:
     body:
       multipart/form-data:
@@ -149,3 +149,11 @@
                   "$ref": "user.json"
                 }
               }
+
+/{userid}/location:
+  get:
+    responses:
+      200:
+        body:
+          application/vnd-v1.0+json:
+            schema: geometry

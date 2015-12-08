@@ -27,7 +27,7 @@ import io.atomicbits.scraml.dsl.StringPart
 import io.atomicbits.scraml.TestClient01._
 import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
-import play.api.libs.json.Format
+import play.api.libs.json.{JsString, Json, Format}
 
 import scala.concurrent.{Await, Future}
 import scala.language.{postfixOps, reflectiveCalls}
@@ -59,7 +59,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       host = host,
       port = port,
       protocol = "http",
-      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"),
+      defaultHeaders = Map(), // "Accept" -> "application/vnd-v1.0+json"
       prefix = None,
       config = ClientConfig()
     )
@@ -76,7 +76,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
-              .withBody( """[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}]""")
+              .withBody( """[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1", "other": {"text": "foobar"}}]""")
               .withStatus(200)))
 
 
@@ -96,11 +96,11 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         age = 21,
         firstName = "John",
         lastName = "Doe",
-        id = "1"
+        id = "1",
+        other = Some(Json.obj("text" -> JsString("foobar")))
       )
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
       assertResult(user)(userResponse.head)
-
     }
 
 
@@ -111,8 +111,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       stubFor(
         post(urlEqualTo(s"/rest/user/foobar"))
           .withHeader("Content-Type", equalTo("application/x-www-form-urlencoded"))
-          .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
-          .withRequestBody(equalTo( """text=Hello%20Foobar"""))
+          .withHeader("Accept", equalTo("*/*"))
+          .withRequestBody(equalTo("""text=Hello-Foobar""")) // """text=Hello%20Foobar"""
           .willReturn(
             aResponse()
               .withBody("Post OK")
@@ -126,7 +126,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualPostResponse: Future[String] =
         userFoobarResource
-          .post(text = "Hello Foobar", value = None).asString
+          .post(text = "Hello-Foobar", value = None).asString
 
 
 
@@ -211,7 +211,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("execute a DELETE request")
 
-      val eventualDeleteResponse: Future[String] = userFoobarResource.delete().asString
+      val eventualDeleteResponse: Future[String] = userFoobarResource.addHeaders("Accept" -> "application/vnd-v1.0+json").delete().asString
 
 
       Then("we should get the correct response")
@@ -228,7 +228,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       // http://localhost:8281/rest/user/upload	POST	headers:	Accept:application/vnd-v1.0+json	Content-Type:multipart/form-data
       Given("a form upload web service")
       stubFor(
-        post(urlEqualTo(s"/rest/user/upload"))
+        post(urlEqualTo(s"/rest/user/up-load"))
           .withHeader("Content-Type", equalTo("multipart/form-data"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
