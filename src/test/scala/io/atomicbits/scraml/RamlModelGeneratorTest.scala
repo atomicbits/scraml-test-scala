@@ -59,7 +59,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       host = host,
       port = port,
       protocol = "http",
-      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"),
+      defaultHeaders = Map(), // "Accept" -> "application/vnd-v1.0+json"
       prefix = None,
       config = ClientConfig()
     )
@@ -111,8 +111,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       stubFor(
         post(urlEqualTo(s"/rest/user/foobar"))
           .withHeader("Content-Type", equalTo("application/x-www-form-urlencoded"))
-          .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
-          .withRequestBody(equalTo( """text=Hello%20Foobar"""))
+          .withHeader("Accept", equalTo("*/*"))
+          .withRequestBody(equalTo("""text=Hello-Foobar""")) // """text=Hello%20Foobar"""
           .willReturn(
             aResponse()
               .withBody("Post OK")
@@ -126,7 +126,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualPostResponse: Future[String] =
         userFoobarResource
-          .post(text = "Hello Foobar", value = None).asString
+          .post(text = "Hello-Foobar", value = None).asString
 
 
 
@@ -211,7 +211,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("execute a DELETE request")
 
-      val eventualDeleteResponse: Future[String] = userFoobarResource.delete().asString
+      val eventualDeleteResponse: Future[String] = userFoobarResource.addHeaders("Accept" -> "application/vnd-v1.0+json").delete().asString
 
 
       Then("we should get the correct response")
@@ -228,7 +228,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       // http://localhost:8281/rest/user/upload	POST	headers:	Accept:application/vnd-v1.0+json	Content-Type:multipart/form-data
       Given("a form upload web service")
       stubFor(
-        post(urlEqualTo(s"/rest/user/upload"))
+        post(urlEqualTo(s"/rest/user/up-load"))
           .withHeader("Content-Type", equalTo("multipart/form-data"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
