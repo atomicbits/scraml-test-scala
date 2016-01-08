@@ -1,3 +1,4 @@
+# /rest/animals
 
 /:
   get:
@@ -5,4 +6,57 @@
       200:
         body:
           application/vnd-v1.0+json:
-            schema: animal
+            schema: |
+              {
+                "id": "http://atomicbits.io/schema/anonymous001.json",
+                "type": "array",
+                "items": {
+                  "$ref": "http://atomicbits.io/schema/animal.json"
+                }
+              }
+  put:
+    body:
+      application/vnd-v1.0+json:
+        schema: |
+          {
+            "id": "http://atomicbits.io/schema/anonymous002.json",
+            "type": "array",
+            "items": {
+              "$ref": "http://atomicbits.io/schema/animal.json"
+            }
+          }
+    responses:
+      200:
+        body:
+          application/vnd-v1.0+json:
+            schema: |
+              {
+                "id": "http://atomicbits.io/schema/anonymous003.json",
+                "type": "array",
+                "items": {
+                  "$ref": "http://atomicbits.io/schema/animal.json"
+                }
+              }
+  post:
+    body:
+      application/json:
+        schema: |
+          {
+            "id": "http://atomicbits.io/schema/anonymous013.json",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "id": "http://atomicbits.io/schema/anonymous014.json",
+                "type": "array",
+                "items": {
+                  "$ref": "http://atomicbits.io/schema/animal.json"
+                }
+              }

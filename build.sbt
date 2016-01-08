@@ -2,7 +2,7 @@ name := "scraml-test-scala"
 
 organization := "io.atomicbits"
 
-version := "0.4.4-SNAPSHOT"
+version := "0.4.6"
 
 scalaVersion := "2.11.5"
 

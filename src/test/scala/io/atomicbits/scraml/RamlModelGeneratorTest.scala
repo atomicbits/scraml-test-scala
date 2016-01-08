@@ -293,39 +293,68 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Then("we should get the correct response")
       val listBody = Await.result(listBodyResponse, 2 seconds)
       assertResult(List(user))(listBody)
-
     }
 
 
-    scenario("test the use of a class hierarchy") {
+    scenario("test List as request with primitive type 'String'") {
 
-      Given("a web service providing a dog as an animal")
-      val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
+      Given("a form upload web service")
+      val dogs = List(
+        Dog(gender = "female", canBark = true, name = Some("Ziva")),
+        Dog(gender = "male", canBark = true, name = Some("Olly"))
+      )
 
-      def dogToJson()(implicit formatter: Format[Animal]) = {
-        formatter.writes(dog).toString()
+      def dogListToJson()(implicit formatter: Format[List[Animal]]) = {
+        formatter.writes(dogs).toString()
       }
 
       stubFor(
-        get(urlEqualTo(s"/rest/animals"))
+        post(urlEqualTo(s"/rest/animals"))
+          .withRequestBody(equalTo("""["1","2"]"""))
           .willReturn(
             aResponse()
-              .withBody(dogToJson())
+              .withBody(dogListToJson())
               .withStatus(200)
           )
       )
 
 
       When("web service requesting an animal")
-      val eventualAnimal = client.rest.animals.get().asType
+      val eventualAnimals = client.rest.animals.post(List("1", "2")).asType
+
+
+      Then("we should get two dogs in the list")
+      val animals: List[Animal] = Await.result(eventualAnimals, 2 seconds)
+      assertResult(animals)(dogs)
+    }
+
+
+    scenario("test the use of a class hierarchy") {
+
+      Given("a web service providing a dog as an animal")
+      val dogs = List(Dog(gender = "female", canBark = true, name = Some("Ziva")))
+
+      def dogListToJson()(implicit formatter: Format[List[Animal]]) = {
+        formatter.writes(dogs).toString()
+      }
+
+      stubFor(
+        get(urlEqualTo(s"/rest/animals"))
+          .willReturn(
+            aResponse()
+              .withBody(dogListToJson())
+              .withStatus(200)
+          )
+      )
+
+
+      When("web service requesting an animal")
+      val eventualAnimals = client.rest.animals.get().asType
 
 
       Then("we should get a dog")
-      val animal: Animal = Await.result(eventualAnimal, 2 seconds)
-      assertResult(animal)(dog)
-
-      // println(s"animal: $animal")
-
+      val animal: List[Animal] = Await.result(eventualAnimals, 2 seconds)
+      assertResult(animal)(dogs)
     }
 
 
