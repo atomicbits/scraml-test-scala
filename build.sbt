@@ -7,9 +7,10 @@ version := "0.4.6"
 scalaVersion := "2.11.5"
 
 // Sonatype snapshot resolver is needed to fetch SNAPSHOT releases of scraml
- resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
+  "com.ning" % "async-http-client" % "1.9.31", // http client by default used by scraml
   "ch.qos.logback" % "logback-classic" % "1.1.1" % "test",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test" withSources() withJavadoc(),
   "org.scalacheck" %% "scalacheck" % "1.12.1" % "test" withSources() withJavadoc(),
@@ -23,7 +24,7 @@ scramlRamlApi in scraml in Compile := "io/atomicbits/scraml/TestClient01.raml"
 
 publishMavenStyle := true
 
-pomIncludeRepository := { _ => false}
+pomIncludeRepository := { _ => false }
 
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
@@ -33,7 +34,7 @@ publishTo := {
     Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
-pomExtra :=  <url>https://github.com/atomicbits/scraml-test-scala</url>
+pomExtra := <url>https://github.com/atomicbits/scraml-test-scala</url>
   <licenses>
     <license>
       <name>AGPL license</name>

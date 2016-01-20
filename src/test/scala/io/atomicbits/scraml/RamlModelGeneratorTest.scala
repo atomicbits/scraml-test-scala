@@ -18,18 +18,21 @@
 
 package io.atomicbits.scraml
 
+import java.io._
+
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
 import io.atomicbits.schema._
-import io.atomicbits.scraml.dsl.StringPart
+import io.atomicbits.scraml.dsl.{Response, StringPart}
 import io.atomicbits.scraml.TestClient01._
 import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
-import play.api.libs.json.{JsString, Json, Format}
+import play.api.libs.json.{JsValue, JsString, Json, Format}
 
 import scala.concurrent.{Await, Future}
+import scala.io.Source
 import scala.language.{postfixOps, reflectiveCalls}
 
 import scala.concurrent.duration._
@@ -44,6 +47,16 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   val wireMockServer = new WireMockServer(wireMockConfig().port(port))
 
+  val client = TestClient01(
+    host = host,
+    port = port,
+    protocol = "http",
+    defaultHeaders = Map(), // "Accept" -> "application/vnd-v1.0+json"
+    prefix = None,
+    config = ClientConfig(),
+    clientFactory = None
+  )
+
   override def beforeAll() = {
     wireMockServer.start()
     WireMock.configureFor(host, port)
@@ -51,18 +64,10 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   override def afterAll() = {
     wireMockServer.stop()
+    client.close()
   }
 
   feature("Use the DSL based on a RAML specification") {
-
-    val client = new TestClient01(
-      host = host,
-      port = port,
-      protocol = "http",
-      defaultHeaders = Map(), // "Accept" -> "application/vnd-v1.0+json"
-      prefix = None,
-      config = ClientConfig()
-    )
 
     val userResource = client.rest.user
     val userFoobarResource = userResource.userid("foobar")
@@ -310,7 +315,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       stubFor(
         post(urlEqualTo(s"/rest/animals"))
-          .withRequestBody(equalTo("""["1","2"]"""))
+          .withRequestBody(equalTo( """["1","2"]"""))
           .willReturn(
             aResponse()
               .withBody(dogListToJson())
@@ -421,6 +426,119 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(expectedTree)(receivedTree)
     }
 
+
+    scenario("binary upload using a file") {
+
+      Given("a service receives binary data")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/animals/datafile/upload"))
+          .withRequestBody(equalTo(new String(binaryData)))
+          .willReturn(
+            aResponse()
+              .withBody( """{"received":"OK"}""")
+              .withStatus(200)
+          )
+      )
+
+      When("a client requests the tree")
+      val file = new File(this.getClass.getResource("/io/atomicbits/scraml/binaryData.bin").toURI)
+      val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(file)
+
+      Then("then the right tree should be received")
+      val response = Await.result(eventualResponse, 2 seconds)
+      assertResult(200)(response.status)
+    }
+
+
+    scenario("binary upload using an inputstream") {
+
+      Given("a service receives binary data")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/animals/datafile/upload"))
+          .withRequestBody(equalTo(new String(binaryData)))
+          .willReturn(
+            aResponse()
+              .withBody( """{"received":"OK"}""")
+              .withStatus(200)
+          )
+      )
+
+      When("a client requests the tree")
+      val inputStream: InputStream = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
+      val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(inputStream)
+
+      Then("then the right tree should be received")
+      val response = Await.result(eventualResponse, 2 seconds)
+      assertResult(200)(response.status)
+    }
+
+
+    scenario("binary upload using a byte array") {
+
+      Given("a service receives binary data")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/animals/datafile/upload"))
+          .withRequestBody(equalTo(new String(binaryData)))
+          .willReturn(
+            aResponse()
+              .withBody( """{"received":"OK"}""")
+              .withStatus(200)
+          )
+      )
+
+      When("a client requests the tree")
+      val inputStream: InputStream = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
+      val array = new Array[Byte](1024)
+      inputStream.read(array, 0, 1024)
+      inputStream.close()
+      val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(array)
+
+      Then("then the right tree should be received")
+      val response = Await.result(eventualResponse, 2 seconds)
+      assertResult(200)(response.status)
+    }
+
+
+    scenario("binary upload using a string") {
+      Given("a service receives binary data")
+
+      val text = "some test string"
+
+      stubFor(
+        post(urlEqualTo(s"/rest/animals/datafile/upload"))
+          .withRequestBody(equalTo(text))
+          .willReturn(
+            aResponse()
+              .withBody( """{"received":"OK"}""")
+              .withStatus(200)
+          )
+      )
+
+      When("a client requests the tree")
+      val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(text)
+
+      Then("then the right tree should be received")
+      val response = Await.result(eventualResponse, 2 seconds)
+      assertResult(200)(response.status)
+    }
+
+  }
+
+
+  private def binaryData: Array[Byte] = {
+    val data = 0 to 1023 map (_.toByte)
+    Array[Byte](data:_*)
+  }
+
+  private def createBinaryDataFile = {
+    val file = new File("binaryData.bin")
+    val fileOutputStream = new FileOutputStream(file)
+    fileOutputStream.write(binaryData)
+    fileOutputStream.flush()
+    fileOutputStream.close()
   }
 
 }

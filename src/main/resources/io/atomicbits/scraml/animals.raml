@@ -60,3 +60,12 @@
                   "$ref": "http://atomicbits.io/schema/animal.json"
                 }
               }
+
+/datafile/upload:
+  post:
+    body:
+      application/octet-stream:
+    responses:
+      200:
+        body:
+          application/json:
