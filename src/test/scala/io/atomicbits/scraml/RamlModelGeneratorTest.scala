@@ -25,7 +25,7 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
 import io.atomicbits.schema._
-import io.atomicbits.scraml.dsl.{Response, StringPart}
+import io.atomicbits.scraml.dsl.{BinaryData, Response, StringPart}
 import io.atomicbits.scraml.TestClient01._
 import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{BeforeAndAfterAll, GivenWhenThen, FeatureSpec}
@@ -38,8 +38,8 @@ import scala.language.{postfixOps, reflectiveCalls}
 import scala.concurrent.duration._
 
 /**
- * Created by peter on 17/05/15, Atomic BITS bvba (http://atomicbits.io). 
- */
+  * Created by peter on 17/05/15, Atomic BITS bvba (http://atomicbits.io).
+  */
 class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeAndAfterAll {
 
   val port = 8281
@@ -119,10 +119,10 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Accept", equalTo("*/*"))
           .withRequestBody(equalTo("""text=Hello-Foobar""")) // """text=Hello%20Foobar"""
           .willReturn(
-            aResponse()
-              .withBody("Post OK")
-              .withStatus(200)
-          )
+          aResponse()
+            .withBody("Post OK")
+            .withStatus(200)
+        )
       )
 
 
@@ -370,8 +370,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       val pagedList = PagedList[Dog, String](count = 1, elements = List(dog), owner = Option("Peter"))
 
       /**
-       * val json = s"""{"count":1,"elements":[{"gender":"female","canBark":true,"name":"Ziva"}],"owner":"Peter"}"""
-       */
+        * val json = s"""{"count":1,"elements":[{"gender":"female","canBark":true,"name":"Ziva"}],"owner":"Peter"}"""
+        */
       def pagedListToJson()(implicit formatter: Format[PagedList[Dog, String]]) = {
         formatter.writes(pagedList).toString()
       }
@@ -441,11 +441,11 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           )
       )
 
-      When("a client requests the tree")
+      When("a client uploads the data")
       val file = new File(this.getClass.getResource("/io/atomicbits/scraml/binaryData.bin").toURI)
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(file)
 
-      Then("then the right tree should be received")
+      Then("then the data should be uploaded")
       val response = Await.result(eventualResponse, 2 seconds)
       assertResult(200)(response.status)
     }
@@ -465,11 +465,11 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           )
       )
 
-      When("a client requests the tree")
+      When("a client uploads the data")
       val inputStream: InputStream = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(inputStream)
 
-      Then("then the right tree should be received")
+      Then("then the data should be uploaded")
       val response = Await.result(eventualResponse, 2 seconds)
       assertResult(200)(response.status)
     }
@@ -489,20 +489,21 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           )
       )
 
-      When("a client requests the tree")
+      When("a client uploads the data")
       val inputStream: InputStream = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
       val array = new Array[Byte](1024)
       inputStream.read(array, 0, 1024)
       inputStream.close()
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(array)
 
-      Then("then the right tree should be received")
+      Then("then the data should be uploaded")
       val response = Await.result(eventualResponse, 2 seconds)
       assertResult(200)(response.status)
     }
 
 
     scenario("binary upload using a string") {
+
       Given("a service receives binary data")
 
       val text = "some test string"
@@ -517,12 +518,35 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           )
       )
 
-      When("a client requests the tree")
+      When("a client uploads the data")
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(text)
 
-      Then("then the right tree should be received")
+      Then("then the right data should be uploaded")
       val response = Await.result(eventualResponse, 2 seconds)
       assertResult(200)(response.status)
+    }
+
+
+    scenario("download binary data") {
+
+      Given("a service responds with binary data")
+
+      stubFor(
+        get(urlEqualTo(s"/rest/animals/datafile/download"))
+          .willReturn(
+            aResponse()
+              .withBody(binaryData)
+              .withStatus(200)
+          )
+      )
+
+      When("a client requests the download")
+      val eventualResponse: Future[Response[BinaryData]] = client.rest.animals.datafile.download.get()
+
+      Then("then the data should be downloaded")
+      val response = Await.result(eventualResponse, 2 seconds)
+      assertResult(200)(response.status)
+      assertResult(binaryData)(response.body.get.asBytes)
     }
 
   }
@@ -530,7 +554,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   private def binaryData: Array[Byte] = {
     val data = 0 to 1023 map (_.toByte)
-    Array[Byte](data:_*)
+    Array[Byte](data: _*)
   }
 
   private def createBinaryDataFile = {
