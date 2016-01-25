@@ -14,13 +14,14 @@ object HelloWorld {
   def sayHello(): String = "Hello!"
 
   def useApi() = {
-    val client = new TestClient01(
+    val client = TestClient01(
       host = "localhost",
       port = 80,
       protocol = "http",
       prefix = None,
       config = ClientConfig(),
-      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"))
+      defaultHeaders = Map("Accept" -> "application/vnd-v1.0+json"),
+      None)
 
     client.rest.user
       .get(age = Some(51), firstName = Some("John"), lastName = None, organization = List("ESA", "NASA"))
