@@ -42,6 +42,10 @@
     "other": {
       "type": "object",
       "properties": {}
+    },
+    "fancy-field": {
+      "type": "string",
+      "required": false
     }
   }
 }

@@ -102,7 +102,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         firstName = "John",
         lastName = "Doe",
         id = "1",
-        other = Some(Json.obj("text" -> JsString("foobar")))
+        other = Some(Json.obj("text" -> JsString("foobar"))),
+        fancyfield = None
       )
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
       assertResult(user)(userResponse.head)
@@ -153,7 +154,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         age = 21,
         firstName = "John",
         lastName = "Doe",
-        id = "1"
+        id = "1",
+        fancyfield = None
       )
 
       val link = Link("http://foo.bar", Method.GET, None)
@@ -264,7 +266,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         age = 21,
         firstName = "John",
         lastName = "Doe",
-        id = "1"
+        id = "1",
+        fancyfield = None
       )
 
       // Imports needed to get the implicit JSON formatters for both types.
