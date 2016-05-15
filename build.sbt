@@ -4,7 +4,7 @@ organization := "io.atomicbits"
 
 version := "0.4.14-SNAPSHOT"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.8"
 
 
 // Sonatype snapshot resolver is needed to fetch SNAPSHOT releases of scraml
