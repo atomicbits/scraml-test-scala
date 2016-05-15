@@ -2,9 +2,9 @@ name := "scraml-test-scala"
 
 organization := "io.atomicbits"
 
-version := "0.4.9-SNAPSHOT"
+version := "0.4.12-SNAPSHOT"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.8"
 
 // Sonatype snapshot resolver is needed to fetch SNAPSHOT releases of scraml
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
