@@ -2,7 +2,7 @@ name := "scraml-test-scala"
 
 organization := "io.atomicbits"
 
-version := "0.4.14-SNAPSHOT"
+version := "0.4.15-SNAPSHOT"
 
 scalaVersion := "2.11.8"
 
@@ -21,6 +21,23 @@ libraryDependencies ++= Seq(
 
 scramlRamlApi in scraml in Compile := "io/atomicbits/scraml/TestClient01.raml"
 
+scramlLicenseKey in scraml in Compile :=
+  """
+    |U1Q7Q1ZQWnZMbHZSakQ7TGVwN0JSYkJXT2I7aW8uYXRvbWljYml0czsyMDE2LTA3LTAxOzM2NiFj
+    |VzlubUlqM2t4a1o2aUZFUFhDQm5nb01pd005bXVrb0k3MVczUnI2cmxaYjc3UC92OWlRUDFXeHBD
+    |Mk9Gd2hQcHBUVXkwYVBQZFhRCnJ6Y3VialdQV2d1c3gxVHVaOTAxNEVKbmI4cm9vdk1FakVqNlZw
+    |UG1mLzVyaHdTUXg5bWRtOWxtTDdUVnJoWTM1MEZaNVNJVWxGcG4Kb201cWVkdGp5cEs5dHRhajd3
+    |V3FEby9jN2FJOEtNZk9lME5wWjhidDBzUFFoZkdvV2VDMEZCWU9pTU1BdkZPWlNuWTZDNk1UNmhM
+    |WQo0eEoxVWFrTkNaaFNOeHhqRUQyNk44SHBFcFlybjlKWWRBa1piME5mVm9hczM0bHQ4WmN1OWJE
+    |bFExK3FmaDlmazlpbm5SdjVRVkhrCnEyMFJCZ3NKbHlubnFlZHdJYm5oNTk3V1hFTE4yVzNyTC9l
+    |Mjl3PT0=
+  """.stripMargin
+
+scramlClassHeader in scraml in Compile :=
+  """
+    |All rights reserved.
+    |This is a custom license header.
+  """.stripMargin
 
 // Publish settings
 
