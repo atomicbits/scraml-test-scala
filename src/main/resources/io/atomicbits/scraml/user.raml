@@ -21,7 +21,6 @@
           application/vnd-v1.0+json:
             schema: |
               {
-                "id": "http://atomicbits.io/schema/anonymous1.json",
                 "type": "array",
                 "items": {
                   "$ref": "user.json"
@@ -84,6 +83,10 @@
       200:
         body:
   delete:
+    responses:
+      200:
+        body:
+          application/vnd-v1.0+json:
   put:
     body:
       application/vnd-v1.0+json:
@@ -110,7 +113,6 @@
           application/vnd-v1.0+json:
             schema: |
               {
-                "id": "http://atomicbits.io/schema/anonymous3.json",
                 "$ref": "http://atomicbits.io/schema/paged-list.json#",
                 "genericTypes": {
                   "T": {
@@ -131,7 +133,6 @@
       application/vnd-v1.0+json:
         schema: |
           {
-            "id": "http://atomicbits.io/schema/anonymous1.json",
             "type": "array",
             "items": {
               "$ref": "user.json"
@@ -143,7 +144,6 @@
           application/vnd-v1.0+json:
             schema: |
               {
-                "id": "http://atomicbits.io/schema/anonymous2.json",
                 "type": "array",
                 "items": {
                   "$ref": "user.json"
@@ -157,3 +157,37 @@
         body:
           application/vnd-v1.0+json:
             schema: geometry
+
+/test:
+  get:
+    body:
+      application/json:
+        schema: |
+          {
+            "$schema": "http://json-schema.org/draft-03/schema#",
+            "id": "http://gurumeditator.io/schema/my-object.json",
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "id": "http://gurumeditator.io/schema/my-other-object.json",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "required": true
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "required": true
+                    },
+                    "placeList": {
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                }
+              }
+            }
+          }

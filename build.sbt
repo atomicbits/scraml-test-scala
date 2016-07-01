@@ -2,15 +2,17 @@ name := "scraml-test-scala"
 
 organization := "io.atomicbits"
 
-version := "0.4.7"
+version := "0.4.15"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.8"
+
 
 // Sonatype snapshot resolver is needed to fetch SNAPSHOT releases of scraml
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-  "com.ning" % "async-http-client" % "1.9.31", // http client by default used by scraml
+  "com.ning" % "async-http-client" % "1.9.36", // http client by default used by scraml
+  "io.atomicbits" %% "scraml-dsl-scala" % scramlVersion.value, // scraml DSL dependency
   "ch.qos.logback" % "logback-classic" % "1.1.1" % "test",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test" withSources() withJavadoc(),
   "org.scalacheck" %% "scalacheck" % "1.12.1" % "test" withSources() withJavadoc(),
@@ -29,7 +31,7 @@ pomIncludeRepository := { _ => false }
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
   if (isSnapshot.value)
-    Some("snapshots" at nexus + "content/repositories/snapshots")
+    None // Some("snapshots" at nexus + "content/repositories/snapshots")
   else
     Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
