@@ -76,8 +76,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       Given("a matching web service")
 
+      // '[]' url-encoded gives: %5B%5D
       stubFor(
-        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization=ESA&organization=NASA"))
+        get(urlEqualTo(s"/rest/user?organization%5B%5D=ESA&organization%5B%5D=NASA&age=51.0&firstName=John%20C"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()
@@ -116,8 +117,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val errorMessage = "Oops"
 
+      // '[]' url-encoded gives: %5B%5D
       stubFor(
-        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization=ESA&organization=NASA"))
+        get(urlEqualTo(s"/rest/user?organization%5B%5D=ESA&organization%5B%5D=NASA&age=51.0&firstName=John%20C"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(
             aResponse()

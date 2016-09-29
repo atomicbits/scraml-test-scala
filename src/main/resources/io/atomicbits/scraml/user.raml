@@ -11,7 +11,7 @@
       lastName:
         description: The last name of the user.
         type: string
-      organization:
+      organization[]:
         description: The organization of the user.
         type: string
         repeat: true
@@ -23,7 +23,7 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "user.json"
+                  "$ref": "http://atomicbits.io/schema/user.json"
                 }
               }
 
@@ -44,11 +44,6 @@
             schema: tree
 
 /{userid}:
-  uriParameters:
-    userid:
-      description: The user's id.
-      type: string
-      required: true
   get:
     queryParameters:
       age:
@@ -135,7 +130,7 @@
           {
             "type": "array",
             "items": {
-              "$ref": "user.json"
+              "$ref": "http://atomicbits.io/schema/user.json"
             }
           }
     responses:
@@ -146,11 +141,16 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "user.json"
+                  "$ref": "http://atomicbits.io/schema/user.json"
                 }
               }
 
 /{userid}/location:
+  uriParameters:
+    userid:
+      description: The user's id.
+      type: string
+      required: true
   get:
     responses:
       200:

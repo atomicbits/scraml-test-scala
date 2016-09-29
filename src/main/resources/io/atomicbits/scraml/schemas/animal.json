@@ -12,6 +12,8 @@
   },
   "oneOf": [
     {
+      "id": "http://atomicbits.io/schema/cat.json#",
+      "type": "object",
       "properties": {
         "_type": {
           "enum": [
@@ -44,6 +46,8 @@
       }
     },
     {
+      "id": "http://atomicbits.io/schema/fish.json#",
+      "type": "object",
       "properties": {
         "_type": {
           "enum": [
