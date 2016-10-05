@@ -149,15 +149,14 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       stubFor(
         post(urlEqualTo(s"/rest/user/foobar"))
           .withHeader("Content-Type", equalTo("application/x-www-form-urlencoded; charset=UTF-8"))
-          .withHeader("Accept", equalTo("*/*"))
+          .withHeader("Accept", equalTo("application/json")) // We expect the default media type here!
           .withRequestBody(equalTo("""text=Hello-Foobar""")) // """text=Hello%20Foobar"""
           .willReturn(
           aResponse()
-            .withBody("Post OK")
+            .withBody("{\"message\": \"Post OK\"}")
             .withStatus(200)
         )
       )
-
 
 
       When("execute a form POST request")
@@ -171,7 +170,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Then("we should get the correct response")
 
       val postResponse = Await.result(eventualPostResponse, 2 seconds)
-      assertResult("Post OK")(postResponse)
+      assertResult("{\"message\": \"Post OK\"}")(postResponse)
 
     }
 
