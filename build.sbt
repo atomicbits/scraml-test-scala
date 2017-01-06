@@ -2,21 +2,20 @@ name := "scraml-test-scala"
 
 organization := "io.atomicbits"
 
-version := "0.5.0.beta"
+version := "0.5.3-SNAPSHOT"
 
 scalaVersion := "2.11.8"
-
 
 // Sonatype snapshot resolver is needed to fetch SNAPSHOT releases of scraml
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-  "com.ning" % "async-http-client" % "1.9.36", // http client by default used by scraml
-  "io.atomicbits" %% "scraml-dsl-scala" % scramlVersion.value, // scraml DSL dependency
-  "ch.qos.logback" % "logback-classic" % "1.1.1" % "test",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test" withSources() withJavadoc(),
-  "org.scalacheck" %% "scalacheck" % "1.12.1" % "test" withSources() withJavadoc(),
-  "com.github.tomakehurst" % "wiremock" % "1.56" % "test"
+  "com.ning"               % "async-http-client" % "1.9.36", // http client by default used by scraml
+  "io.atomicbits"          %% "scraml-dsl-scala" % scramlVersion.value, // scraml DSL dependency
+  "ch.qos.logback"         % "logback-classic"   % "1.1.1" % "test",
+  "org.scalatest"          %% "scalatest"        % "2.2.1" % "test" withSources () withJavadoc (),
+  "org.scalacheck"         %% "scalacheck"       % "1.12.1" % "test" withSources () withJavadoc (),
+  "com.github.tomakehurst" % "wiremock"          % "1.56" % "test"
 )
 
 scramlRamlApi in scraml in Compile := "io/atomicbits/scraml/TestClient01.raml"
@@ -42,7 +41,9 @@ scramlClassHeader in scraml in Compile :=
 
 publishMavenStyle := true
 
-pomIncludeRepository := { _ => false }
+pomIncludeRepository := { _ =>
+  false
+}
 
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
@@ -75,11 +76,4 @@ pomExtra := <url>https://github.com/atomicbits/scraml-test-scala</url>
 credentials ++= (for {
   username <- Option(System.getenv().get("SONATYPE_USERNAME"))
   password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
-} yield
-  Seq(Credentials(
-    "Sonatype Nexus Repository Manager",
-    "oss.sonatype.org",
-    username,
-    password)
-  )).getOrElse(Seq())
-
+} yield Seq(Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password))).getOrElse(Seq())
