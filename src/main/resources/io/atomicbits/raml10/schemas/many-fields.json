@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://atomicbits.io/schema/many-fields.json",
+  "id": "http://atomicbits.io/raml10/many-fields.json",
   "type": "object",
   "properties": {
     "a": {

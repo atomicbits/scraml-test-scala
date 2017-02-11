@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://atomicbits.io/schema/geometry.json",
+  "id": "http://atomicbits.io/raml10/geometry.json",
   "title": "Geo JSON object",
   "description": "Schema for a Geo JSON object",
   "type": "object",
@@ -25,7 +25,7 @@
         },
         "coordinates": {
           "required": true,
-          "$ref": "http://atomicbits.io/schema/geometry.json#/definitions/position"
+          "$ref": "http://atomicbits.io/raml10/geometry.json#/definitions/position"
         }
       }
     },
@@ -40,7 +40,7 @@
         },
         "coordinates": {
           "required": true,
-          "$ref": "http://atomicbits.io/schema/geometry.json#/definitions/positionArray"
+          "$ref": "http://atomicbits.io/raml10/geometry.json#/definitions/positionArray"
         }
       }
     },
@@ -55,7 +55,7 @@
         },
         "coordinates": {
           "required": true,
-          "$ref": "http://atomicbits.io/schema/geometry.json#/definitions/lineString"
+          "$ref": "http://atomicbits.io/raml10/geometry.json#/definitions/lineString"
         }
       }
     },
@@ -72,7 +72,7 @@
           "required": true,
           "type": "array",
           "items": {
-            "$ref": "http://atomicbits.io/schema/geometry.json#/definitions/lineString"
+            "$ref": "http://atomicbits.io/raml10/geometry.json#/definitions/lineString"
           }
         }
       }
@@ -88,7 +88,7 @@
         },
         "coordinates": {
           "required": true,
-          "$ref": "http://atomicbits.io/schema/geometry.json#/definitions/polygon"
+          "$ref": "http://atomicbits.io/raml10/geometry.json#/definitions/polygon"
         }
       }
     },
@@ -105,7 +105,7 @@
           "required": true,
           "type": "array",
           "items": {
-            "$ref": "http://atomicbits.io/schema/geometry.json#/definitions/polygon"
+            "$ref": "http://atomicbits.io/raml10/geometry.json#/definitions/polygon"
           }
         }
       }

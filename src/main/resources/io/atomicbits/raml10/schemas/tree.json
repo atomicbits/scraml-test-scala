@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://atomicbits.io/schema/tree.json",
+  "id": "http://atomicbits.io/raml10/tree.json",
   "type": "object",
   "description": "a tree structure",
   "properties": {

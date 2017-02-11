@@ -25,11 +25,12 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
-import io.atomicbits.schema._
+import io.atomicbits.raml10._
 import io.atomicbits.scraml.dsl.{ BinaryData, Response, StringPart }
-import io.atomicbits.scraml.TestClient01._
+import io.atomicbits.raml10.RamlTestClient._
 import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{ BeforeAndAfterAll, FeatureSpec, GivenWhenThen }
+import org.scalatest.Matchers._
 import play.api.libs.json.{ Format, JsString, JsValue, Json }
 
 import scala.concurrent.{ Await, Future }
@@ -46,7 +47,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   val wireMockServer = new WireMockServer(wireMockConfig().port(port))
 
-  val client = TestClient01(
+  val client = RamlTestClient(
     host           = host,
     port           = port,
     protocol       = "http",
@@ -595,6 +596,31 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       val response = Await.result(eventualResponse, 2 seconds)
       assertResult(200)(response.status)
       assertResult(binaryData)(response.body.get.asBytes)
+    }
+
+  }
+
+  feature("Use the DSL based on a RAML specification") {
+
+    scenario("test a GET request on a simple list of books") {
+
+      Given("a web service that returns a list of books")
+      val booksResource = client.books
+
+      stubFor(
+        get(urlEqualTo(s"/books"))
+          .withHeader("Accept", equalTo("application/json"))
+          .willReturn(aResponse()
+            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi"}]""")
+            .withStatus(200)))
+
+      When("we request the list of books")
+      val futureBooks       = booksResource.get.asType
+      val books: List[Book] = Await.result(futureBooks, 2 seconds)
+
+      Then("")
+      books.head.author shouldBe Author(firstName = "James", lastName = "Corey")
+
     }
 
   }

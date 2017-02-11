@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://atomicbits.io/schema/paged-list.json#",
+  "id": "http://atomicbits.io/raml10/paged-list.json#",
   "type": "object",
   "typeVariables": ["T", "U"],
   "description": "A paged list with an optional owner of the list",

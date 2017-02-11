@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://atomicbits.io/schema/animal.json#",
+  "id": "http://atomicbits.io/raml10/animal.json#",
   "type": "object",
   "typeDiscriminator": "_type",
   "description": "An animal object.",
@@ -12,7 +12,7 @@
   },
   "oneOf": [
     {
-      "id": "http://atomicbits.io/schema/cat.json#",
+      "id": "http://atomicbits.io/raml10/cat.json#",
       "type": "object",
       "properties": {
         "_type": {
@@ -27,7 +27,7 @@
       }
     },
     {
-      "id": "http://atomicbits.io/schema/dog.json#",
+      "id": "http://atomicbits.io/raml10/dog.json#",
       "type": "object",
       "properties": {
         "_type": {
@@ -46,7 +46,7 @@
       }
     },
     {
-      "id": "http://atomicbits.io/schema/fish.json#",
+      "id": "http://atomicbits.io/raml10/fish.json#",
       "type": "object",
       "properties": {
         "_type": {

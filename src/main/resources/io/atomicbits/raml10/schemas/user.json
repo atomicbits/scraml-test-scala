@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://atomicbits.io/schema/user.json#",
+  "id": "http://atomicbits.io/raml10/user.json#",
   "type": "object",
   "description": "A user object.",
   "definitions": {
@@ -34,7 +34,7 @@
     },
     "homePage": {
       "required": false,
-      "$ref": "http://atomicbits.io/schema/link.json#"
+      "$ref": "http://atomicbits.io/raml10/link.json#"
     },
     "address": {
       "$ref": "#/definitions/address"

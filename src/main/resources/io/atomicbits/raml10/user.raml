@@ -23,7 +23,7 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "http://atomicbits.io/schema/user.json"
+                  "$ref": "http://atomicbits.io/raml10/user.json"
                 }
               }
 
@@ -108,10 +108,10 @@
           application/vnd-v1.0+json:
             schema: |
               {
-                "$ref": "http://atomicbits.io/schema/paged-list.json#",
+                "$ref": "http://atomicbits.io/raml10/paged-list.json#",
                 "genericTypes": {
                   "T": {
-                    "$ref": "http://atomicbits.io/schema/dog.json"
+                    "$ref": "http://atomicbits.io/raml10/dog.json"
                   },
                   "U": {
                     "type": "string"
@@ -123,7 +123,7 @@
       application/vnd-v1.0+json:
         schema: |
           {
-            "$ref": "http://atomicbits.io/schema/dog.json"
+            "$ref": "http://atomicbits.io/raml10/dog.json"
           }
     responses:
       201:
@@ -139,7 +139,7 @@
           {
             "type": "array",
             "items": {
-              "$ref": "http://atomicbits.io/schema/user.json"
+              "$ref": "http://atomicbits.io/raml10/user.json"
             }
           }
     responses:
@@ -150,7 +150,7 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "http://atomicbits.io/schema/user.json"
+                  "$ref": "http://atomicbits.io/raml10/user.json"
                 }
               }
 

@@ -4,7 +4,7 @@ title: test01
 version: 1.0
 mediaType: application/json
 
-schemas:
+types:
   link:         !include schemas/link.json
   method:       !include schemas/method.json
   user:         !include schemas/user.json
@@ -46,7 +46,9 @@ schemas:
     description: Get all books
     responses:
       200:
-        body: Book[]
+        body:
+          application/json:
+            type: Book[]
 
 /rest/user:
   !include user.raml

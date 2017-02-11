@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
   "com.github.tomakehurst" % "wiremock"          % "1.56" % "test"
 )
 
-scramlRamlApi in scraml in Compile := "io/atomicbits/scraml/TestClient01.raml"
+scramlRamlApi in scraml in Compile := "io/atomicbits/raml10/RamlTestClient.raml"
 
 scramlLicenseKey in scraml in Compile :=
   """
