@@ -612,7 +612,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "type": "Book"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "type": "ComicBook"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "type": "SciFiComicBook"}]""")
+            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "type": "Book"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "type": "ComicBook"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "villain": "Mr. Badguy", "type": "SciFiComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of books")
@@ -622,21 +622,27 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Then("we should get the expected books")
       //.head.author shouldBe Author(firstName = "James", lastName = "Corey")
       val expectedBooks = Set(
-        BookImpl(title        = "Leviathan Wakes",
-                 author       = Author(firstName = "James", lastName = "Corey"),
-                 genre        = "SciFi",
-                 isbn         = "978-0-316-12908-4"),
-        ComicBookImpl(title   = "The Clone Conspiracy",
-                      author  = Author(firstName = "Peter", lastName = "David"),
-                      genre   = "SciFi",
-                      isbn    = "75960608623800111",
-                      hero    = "Spiderman"),
-        SciFiComicBook(title  = "The Clone Conspiracy",
-                       author = Author(firstName = "Peter", lastName = "David"),
-                       genre  = "SciFi",
-                       isbn   = "75960608623800111",
-                       hero   = "Spiderman",
-                       era    = "1990")
+        BookImpl(title  = "Leviathan Wakes",
+                 author = Author(firstName = "James", lastName = "Corey"),
+                 genre  = "SciFi",
+                 isbn   = "978-0-316-12908-4"),
+        ComicBookImpl(
+          title   = "The Clone Conspiracy",
+          author  = Author(firstName = "Peter", lastName = "David"),
+          genre   = "SciFi",
+          isbn    = "75960608623800111",
+          hero    = "Spiderman",
+          villain = "Mr. Badguy"
+        ),
+        SciFiComicBook(
+          title   = "The Clone Conspiracy",
+          author  = Author(firstName = "Peter", lastName = "David"),
+          genre   = "SciFi",
+          isbn    = "75960608623800111",
+          hero    = "Spiderman",
+          era     = "1990",
+          villain = "Mr. Badguy"
+        )
       )
       assertResult(expectedBooks)(books.toSet)
 
@@ -679,7 +685,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books/comicbooks"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "type": "ComicBook"}]""")
+            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "type": "ComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of comic books")
@@ -701,7 +707,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
           .withRequestBody(
             equalToJson(
-              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "type": "ComicBook"}"""
+              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "type": "ComicBook"}"""
             )
           )
           .willReturn(
@@ -711,11 +717,14 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       )
 
       When("we post a comic book")
-      val book = ComicBookImpl(title = "The Clone Conspiracy",
-                               author = Author(firstName = "Peter", lastName = "David"),
-                               genre  = "SciFi",
-                               isbn   = "75960608623800111",
-                               hero   = "Spiderman")
+      val book = ComicBookImpl(
+        title   = "The Clone Conspiracy",
+        author  = Author(firstName = "Peter", lastName = "David"),
+        genre   = "SciFi",
+        isbn    = "75960608623800111",
+        hero    = "Spiderman",
+        villain = "Mr. Badguy"
+      )
       val futureBookResponse = comicBooksResource.post(book)
 
       Then("we should get the expected success response")
@@ -733,7 +742,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books/comicbooks/scificomicbooks"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "type": "SciFiComicBook"}]""")
+            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "era": "1990", "type": "SciFiComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of scifi comic books")
@@ -755,7 +764,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
           .withRequestBody(
             equalToJson(
-              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "type": "SciFiComicBook"}"""
+              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "era": "1990", "type": "SciFiComicBook"}"""
             )
           )
           .willReturn(
@@ -765,12 +774,15 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       )
 
       When("we post a SciFi comic book")
-      val book = SciFiComicBook(title = "The Clone Conspiracy",
-                                author = Author(firstName = "Peter", lastName = "David"),
-                                genre  = "SciFi",
-                                isbn   = "75960608623800111",
-                                hero   = "Spiderman",
-                                era    = "1990")
+      val book = SciFiComicBook(
+        title   = "The Clone Conspiracy",
+        author  = Author(firstName = "Peter", lastName = "David"),
+        genre   = "SciFi",
+        isbn    = "75960608623800111",
+        hero    = "Spiderman",
+        era     = "1990",
+        villain = "Mr. Badguy"
+      )
       val futureBookResponse = scifiComicBooksResource.post(book)
 
       Then("we should get the expected success response")
