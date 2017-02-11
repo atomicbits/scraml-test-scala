@@ -600,9 +600,10 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("Use the DSL based on a RAML specification") {
+  feature("Use the DSL based on a RAML 1.0 specification") {
 
-    scenario("test a GET request on a simple list of books") {
+    // Regular Book
+    scenario("test a GET request to get a Book list (the base class of a hierarchy)") {
 
       Given("a web service that returns a list of books")
       val booksResource = client.books
@@ -611,16 +612,170 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi"}]""")
+            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "type": "Book"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "type": "ComicBook"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "type": "SciFiComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of books")
       val futureBooks       = booksResource.get.asType
       val books: List[Book] = Await.result(futureBooks, 2 seconds)
 
-      Then("")
-      books.head.author shouldBe Author(firstName = "James", lastName = "Corey")
+      Then("we should get the expected books")
+      //.head.author shouldBe Author(firstName = "James", lastName = "Corey")
+      val expectedBooks = Set(
+        BookImpl(title        = "Leviathan Wakes",
+                 author       = Author(firstName = "James", lastName = "Corey"),
+                 genre        = "SciFi",
+                 isbn         = "978-0-316-12908-4"),
+        ComicBookImpl(title   = "The Clone Conspiracy",
+                      author  = Author(firstName = "Peter", lastName = "David"),
+                      genre   = "SciFi",
+                      isbn    = "75960608623800111",
+                      hero    = "Spiderman"),
+        SciFiComicBook(title  = "The Clone Conspiracy",
+                       author = Author(firstName = "Peter", lastName = "David"),
+                       genre  = "SciFi",
+                       isbn   = "75960608623800111",
+                       hero   = "Spiderman",
+                       era    = "1990")
+      )
+      assertResult(expectedBooks)(books.toSet)
 
+    }
+
+    scenario("test a POST request with a Book (the base class of a hierarchy)") {
+
+      Given("a web service that receives a list of books")
+      val booksResource = client.books
+
+      stubFor(
+        post(urlEqualTo(s"/books"))
+          .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
+          .withRequestBody(
+            equalToJson(
+              """{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "type": "Book"}""")
+          )
+          .willReturn(aResponse()
+            .withStatus(201)))
+
+      When("we post a book")
+      val book = BookImpl(title = "Leviathan Wakes",
+                          author = Author(firstName = "James", lastName = "Corey"),
+                          genre  = "SciFi",
+                          isbn   = "978-0-316-12908-4")
+      val futureBookResponse = booksResource.post(book)
+
+      Then("we should get the expected success response")
+      val response = Await.result(futureBookResponse, 2 seconds)
+      response.status shouldBe 201
+    }
+
+    // Comic Book
+    scenario("test a GET request to get a ComicBook list (a non-leaf subclass in a class hierarchy)") {
+
+      Given("a web service that returns a list of comic books")
+      val comicBooksResource = client.books.comicbooks
+
+      stubFor(
+        get(urlEqualTo(s"/books/comicbooks"))
+          .withHeader("Accept", equalTo("application/json"))
+          .willReturn(aResponse()
+            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "type": "ComicBook"}]""")
+            .withStatus(200)))
+
+      When("we request the list of comic books")
+      val futureBooks            = comicBooksResource.get.asType
+      val books: List[ComicBook] = Await.result(futureBooks, 2 seconds)
+
+      Then("we should get the expected comic books")
+      books.head.author shouldBe Author(firstName = "Peter", lastName = "David")
+
+    }
+
+    scenario("test a POST request with a ComicBook (a non-leaf subclass in a class hierarchy)") {
+
+      Given("a web service that receives a list of comic books")
+      val comicBooksResource = client.books.comicbooks
+
+      stubFor(
+        post(urlEqualTo(s"/books/comicbooks"))
+          .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
+          .withRequestBody(
+            equalToJson(
+              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "type": "ComicBook"}"""
+            )
+          )
+          .willReturn(
+            aResponse()
+              .withStatus(201)
+          )
+      )
+
+      When("we post a comic book")
+      val book = ComicBookImpl(title = "The Clone Conspiracy",
+                               author = Author(firstName = "Peter", lastName = "David"),
+                               genre  = "SciFi",
+                               isbn   = "75960608623800111",
+                               hero   = "Spiderman")
+      val futureBookResponse = comicBooksResource.post(book)
+
+      Then("we should get the expected success response")
+      val response = Await.result(futureBookResponse, 2 seconds)
+      response.status shouldBe 201
+    }
+
+    // SciFi Comic Book
+    scenario("test a GET request to get a SciFi ComicBook list (a leaf subclass in a class hierarchy)") {
+
+      Given("a web service that returns a list of comic books")
+      val scifiComicBooksResource = client.books.comicbooks.scificomicbooks
+
+      stubFor(
+        get(urlEqualTo(s"/books/comicbooks/scificomicbooks"))
+          .withHeader("Accept", equalTo("application/json"))
+          .willReturn(aResponse()
+            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "type": "SciFiComicBook"}]""")
+            .withStatus(200)))
+
+      When("we request the list of scifi comic books")
+      val futureBooks            = scifiComicBooksResource.get.asType
+      val books: List[ComicBook] = Await.result(futureBooks, 2 seconds)
+
+      Then("we should get the expected comic books")
+      books.head.author shouldBe Author(firstName = "Peter", lastName = "David")
+
+    }
+
+    scenario("test a POST request with a SciFi ComicBook (a leaf subclass in a class hierarchy)") {
+
+      Given("a web service that receives a list of comic books")
+      val scifiComicBooksResource = client.books.comicbooks.scificomicbooks
+
+      stubFor(
+        post(urlEqualTo(s"/books/comicbooks/scificomicbooks"))
+          .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
+          .withRequestBody(
+            equalToJson(
+              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "type": "SciFiComicBook"}"""
+            )
+          )
+          .willReturn(
+            aResponse()
+              .withStatus(201)
+          )
+      )
+
+      When("we post a SciFi comic book")
+      val book = SciFiComicBook(title = "The Clone Conspiracy",
+                                author = Author(firstName = "Peter", lastName = "David"),
+                                genre  = "SciFi",
+                                isbn   = "75960608623800111",
+                                hero   = "Spiderman",
+                                era    = "1990")
+      val futureBookResponse = scifiComicBooksResource.post(book)
+
+      Then("we should get the expected success response")
+      val response = Await.result(futureBookResponse, 2 seconds)
+      response.status shouldBe 201
     }
 
   }
