@@ -600,6 +600,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
+  // - - - RAML 1.0 specific tests starte here
+
   feature("Use the DSL based on a RAML 1.0 specification") {
 
     // Regular Book
@@ -612,7 +614,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "type": "Book"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "type": "ComicBook"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "villain": "Mr. Badguy", "type": "SciFiComicBook"}]""")
+            .withBody("""[{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "kind": "Book"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "kind": "ComicBook"}, {"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "era": "1990", "villain": "Mr. Badguy", "kind": "ScienceFictionComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of books")
@@ -658,7 +660,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
           .withRequestBody(
             equalToJson(
-              """{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "type": "Book"}""")
+              """{"author": {"firstName": "James", "lastName": "Corey"}, "isbn":"978-0-316-12908-4", "title": "Leviathan Wakes", "genre": "SciFi", "kind": "Book"}""")
           )
           .willReturn(aResponse()
             .withStatus(201)))
@@ -685,7 +687,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books/comicbooks"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "type": "ComicBook"}]""")
+            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "kind": "ComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of comic books")
@@ -707,7 +709,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
           .withRequestBody(
             equalToJson(
-              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "type": "ComicBook"}"""
+              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "kind": "ComicBook"}"""
             )
           )
           .willReturn(
@@ -742,7 +744,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         get(urlEqualTo(s"/books/comicbooks/scificomicbooks"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
-            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "era": "1990", "type": "SciFiComicBook"}]""")
+            .withBody("""[{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "era": "1990", "kind": "ScienceFictionComicBook"}]""")
             .withStatus(200)))
 
       When("we request the list of scifi comic books")
@@ -764,7 +766,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
           .withRequestBody(
             equalToJson(
-              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "era": "1990", "type": "SciFiComicBook"}"""
+              """{"author": {"firstName": "Peter", "lastName": "David"}, "isbn":"75960608623800111", "title": "The Clone Conspiracy", "genre": "SciFi", "hero": "Spiderman", "villain": "Mr. Badguy", "era": "1990", "kind": "ScienceFictionComicBook"}"""
             )
           )
           .willReturn(

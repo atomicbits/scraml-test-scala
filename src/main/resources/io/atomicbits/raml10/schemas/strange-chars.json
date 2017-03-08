@@ -1,21 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "http://wegenenverkeer.be/po/schema/link.json",
+  "id": "http://atomicbits.io/raml-10/strange-chars.json#",
   "type": "object",
-  "description": "Een href encapsulatie",
+  "javaType" : "",
+  "description": "A href",
   "properties": {
-    "href": {
+    "with space": {
       "type": "string",
       "required": true
     },
-    "method": {
-      "type": "string",
-      "required": true
+    "with/slash": {
+      "required": true,
+      "type": "string"
     },
-    "accept": {
+    "with~tilde": {
       "type": "string",
       "required": false
     }
   }
 }
-
