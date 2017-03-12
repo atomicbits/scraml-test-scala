@@ -67,6 +67,19 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     client.close()
   }
 
+  feature("Test some specific TO serialization issues that gave trouble at some point") {
+
+    scenario("test required fields in an inline object definition") {
+
+      Given("an attributes class containing an inline attributes map object with optional fields")
+      When("we create such a data structure")
+      Then("we should get optional fields and not required ones")
+//       val attributes = Attributes(map = AttributesMap(account = Some(List("limited")), callName = Some("foo"), firstName = Some("Ed"), lastName = Some("Bar")))
+
+    }
+
+  }
+
   feature("Use the DSL based on a RAML specification") {
 
     val userResource       = client.rest.user
