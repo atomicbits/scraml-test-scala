@@ -31,7 +31,7 @@ import io.atomicbits.raml10.RamlTestClient._
 import io.atomicbits.scraml.dsl.client.ClientConfig
 import org.scalatest.{ BeforeAndAfterAll, FeatureSpec, GivenWhenThen }
 import org.scalatest.Matchers._
-import play.api.libs.json.{ Format, JsString, JsValue, Json }
+import play.api.libs.json._
 
 import scala.concurrent.{ Await, Future }
 import scala.language.{ postfixOps, reflectiveCalls }
@@ -74,7 +74,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("an attributes class containing an inline attributes map object with optional fields")
       When("we create such a data structure")
       Then("we should get optional fields and not required ones")
-//       val attributes = Attributes(map = AttributesMap(account = Some(List("limited")), callName = Some("foo"), firstName = Some("Ed"), lastName = Some("Bar")))
+      val attributes = Attributes(
+        map = AttributesMap(account = Some(List("limited")), callName = Some(List("foo")), firstName = Some("Ed"), lastName = Some("Bar")))
 
     }
 
@@ -613,7 +614,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  // - - - RAML 1.0 specific tests starte here
+  // - - - Tests using RAML 1.0 features start here
 
   feature("Use the DSL based on a RAML 1.0 specification") {
 
@@ -803,6 +804,58 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Then("we should get the expected success response")
       val response = Await.result(futureBookResponse, 2 seconds)
       response.status shouldBe 201
+    }
+
+  }
+
+  feature("Test serialization and deserialization of an empty object") {
+
+    scenario("deserialization of a given object that contains a field that points to an empty object") {
+
+      Given("a service providing a response with an empty object field")
+
+      stubFor(
+        get(urlEqualTo(s"/rest/emptyobject"))
+          .willReturn(
+            aResponse()
+              .withBody("""{"message":"OK", "data": { "anything": 123 } }""")
+              .withStatus(200)
+          )
+      )
+
+      When("we request the object containing an empty object field")
+      val eventualEmptyObjectField = client.rest.emptyobject.get().asType
+
+      Then("that object field should be deserialized as a JsObject")
+      val emptyObjectField: EmptyObjectField = Await.result(eventualEmptyObjectField, 2 seconds)
+      assertResult(JsNumber(123))(emptyObjectField.data.value("anything"))
+    }
+
+    scenario("serialization of a given object that contains a field that points to an empty object") {
+
+      Given("a service expecting a body with an empty object field")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/emptyobject"))
+          .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
+          .withRequestBody(
+            equalToJson(
+              """{"message":"OK", "data": { "anything": 123 } }"""
+            )
+          )
+          .willReturn(
+            aResponse()
+              .withStatus(200)
+          )
+      )
+
+      When("we send an object containing an empty object field")
+      val emptyObjectField = EmptyObjectField(message = "OK", data = JsObject(Seq("anything" -> JsNumber(123))))
+      val futureResponse   = client.rest.emptyobject.post(emptyObjectField)
+
+      Then("that object field should be deserialized as a JsObject")
+      val response = Await.result(futureResponse, 2 seconds)
+      response.status shouldBe 200
     }
 
   }
