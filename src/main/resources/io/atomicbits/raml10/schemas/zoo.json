@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/zoo.json",
+  "type": "object",
+  "description": "a zoo",
+  "properties": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "animals": {
+      "type": "array",
+      "items": {
+        "$ref": "animal.json"
+      }
+    }
+  }
+}

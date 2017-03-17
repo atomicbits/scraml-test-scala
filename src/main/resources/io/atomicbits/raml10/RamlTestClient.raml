@@ -1,0 +1,147 @@
+#%RAML 0.8
+---
+title: test01
+version: 1.0
+mediaType: application/json
+
+traits:
+  - error404:               !include traits/error404.raml
+
+types:
+  link:                     !include schemas/link.json
+  method:                   !include schemas/method.json
+  user:                     !include schemas/user.json
+  error:                    !include schemas/error.json
+  animal:                   !include schemas/animal.json
+  zoo:                      !include schemas/zoo.json
+  paged-list:               !include schemas/paged-list.json
+  strange-chars:            !include schemas/strange-chars.json
+  tree:                     !include schemas/tree.json
+  bbox:                     !include schemas/geojson/bbox.json
+  crs:                      !include schemas/geojson/crs.json
+  many-fields:              !include schemas/many-fields.json
+  attributes:               !include schemas/attributes.json
+  empty-object-field:       !include schemas/empty-object-field.json
+  geometry:                 !include schemas/geojson/geometry.json
+  connections:              !include schemas/gurumeditator/connections.json
+  messages:                 !include schemas/gurumeditator/messages.json
+  car:                      !include schemas/relativeid/car.json
+  engine:                   !include schemas/relativeid/engine.json
+  fuel:                     !include schemas/relativeid/fuel.json
+  Book:
+    type: object
+    discriminator: kind
+    properties:
+      isbn:
+        type: string
+        required: true
+      title:
+        type: string
+        required: true
+      genre:
+        type: string
+      author:
+        type: Author
+        required: true
+  Author:
+    type: object
+    properties:
+      firstName:
+        type: string
+        required: true
+      lastName:
+        type: string
+        required: true
+  WithVillain:
+    type: object
+    properties:
+      villain:
+        type: string
+  ComicBook:
+    type: [Book, WithVillain]
+    properties:
+      hero:
+        type: string
+  SciFiComicBook:
+    type: ComicBook
+    discriminatorValue: ScienceFictionComicBook
+    properties:
+      era:
+        type: string
+
+/books:
+  get:
+    description: Get all books
+    responses:
+      200:
+        body:
+          application/json:
+            type: Book[]
+  post:
+    body:
+      application/json:
+        type: Book
+    responses:
+      201:
+
+/books/comicbooks:
+  get:
+    description: Get all comicbooks
+    responses:
+      200:
+        body:
+          application/json:
+            type: ComicBook[]
+  post:
+    body:
+      application/json:
+        type: ComicBook
+    responses:
+      201:
+
+/books/comicbooks/scificomicbooks:
+  get:
+    description: Get all SciFi comicbooks
+    responses:
+      200:
+        body:
+          application/json:
+            type: SciFiComicBook[]
+  post:
+    body:
+      application/json:
+        type: SciFiComicBook
+    responses:
+      201:
+
+/rest/user:
+  !include user.raml
+
+/rest/animals:
+  !include animals.raml
+
+/rest/resource/overlap:
+  !include overlaps.raml
+
+/rest/emptyobject:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: empty-object-field
+  post:
+    body:
+      application/json:
+        type: empty-object-field
+    responses:
+      200:
+        body:
+
+/cars:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: car
