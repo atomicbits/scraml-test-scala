@@ -4,6 +4,9 @@ title: test01
 version: 1.0
 mediaType: application/json
 
+traits:
+  - error404:               !include traits/error404.raml
+
 types:
   link:                     !include schemas/link.json
   method:                   !include schemas/method.json

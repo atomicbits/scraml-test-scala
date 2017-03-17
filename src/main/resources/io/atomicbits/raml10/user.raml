@@ -159,6 +159,20 @@
                   "$ref": "http://atomicbits.io/raml10/user.json"
                 }
               }
+  post:
+    is: [error404]
+    body:
+      application/json;charset=utf-8:
+         schema: |
+           {
+             "type": "array",
+             "items": {
+               "$ref": "http://atomicbits.io/raml10/user.json"
+             }
+           }
+    responses:
+      204:
+        body:
 
 /{userid}/location:
   uriParameters:
