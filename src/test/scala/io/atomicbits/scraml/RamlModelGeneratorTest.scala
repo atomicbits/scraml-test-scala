@@ -92,7 +92,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       // '[]' url-encoded gives: %5B%5D
       stubFor(
-        get(urlEqualTo(s"/rest/user?organization%5B%5D=ESA&organization%5B%5D=NASA&age=51.0&firstName=John%20C"))
+        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization%5B%5D=ESA&organization%5B%5D=NASA"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(aResponse()
             .withBody("""[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}]""")
@@ -129,7 +129,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       // '[]' url-encoded gives: %5B%5D
       stubFor(
-        get(urlEqualTo(s"/rest/user?organization%5B%5D=ESA&organization%5B%5D=NASA&age=51.0&firstName=John%20C"))
+        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization%5B%5D=ESA&organization%5B%5D=NASA"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(aResponse()
             .withBody(errorMessage)
@@ -852,6 +852,35 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       When("we send an object containing an empty object field")
       val emptyObjectField = EmptyObjectField(message = "OK", data = JsObject(Seq("anything" -> JsNumber(123))))
       val futureResponse   = client.rest.emptyobject.post(emptyObjectField)
+
+      Then("that object field should be deserialized as a JsObject")
+      val response = Await.result(futureResponse, 2 seconds)
+      response.status shouldBe 200
+    }
+
+  }
+
+  feature("A plain string post body should serialize without extra quotes.") {
+
+    scenario("serialization of a string post body") {
+
+      Given("a service expecting a body with a simple string value")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/animals/food"))
+          .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
+          .withRequestBody(
+//            equalTo("\"veggie\"")
+            equalTo("veggie")
+          )
+          .willReturn(
+            aResponse()
+              .withStatus(200)
+          )
+      )
+
+      When("we send a simple string object")
+      val futureResponse = client.rest.animals.food.post("veggie")
 
       Then("that object field should be deserialized as a JsObject")
       val response = Await.result(futureResponse, 2 seconds)

@@ -71,3 +71,32 @@
       200:
         body:
           application/octet-stream:
+
+/food:
+  post:
+    body:
+      application/json:
+        type: string
+        required: false
+    responses:
+      "200":
+        body:
+          application/json:
+            type: animal[]
+
+#/byfood:
+#  get:
+#    queryParameters:
+#      food?:
+#        description: The food the animal likes.
+#        enum:
+#          - rats
+#          - birds
+#          - beef
+#          - veggie
+#          - pork
+#    responses:
+#      200:
+#        body:
+#          application/json:
+#            type: animal[]

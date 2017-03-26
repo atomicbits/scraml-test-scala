@@ -1,4 +1,4 @@
-#%RAML 0.8
+#%RAML 1.0
 ---
 title: test01
 version: 1.0
@@ -13,6 +13,7 @@ types:
   user:                     !include schemas/user.json
   error:                    !include schemas/error.json
   animal:                   !include schemas/animal.json
+  cat:                      !include schemas/cat.json
   zoo:                      !include schemas/zoo.json
   paged-list:               !include schemas/paged-list.json
   strange-chars:            !include schemas/strange-chars.json
@@ -28,6 +29,20 @@ types:
   car:                      !include schemas/relativeid/car.json
   engine:                   !include schemas/relativeid/engine.json
   fuel:                     !include schemas/relativeid/fuel.json
+  LongPagedList:
+    type: object
+    typeVariables: [T, U]
+    properties:
+      count:
+        type: integer
+      elements:
+        type: array
+        items:
+          type: object
+          genericType: T
+      owner:
+        type: object
+        genericType: U
   Book:
     type: object
     discriminator: kind
@@ -68,6 +83,14 @@ types:
     properties:
       era:
         type: string
+  Stars:
+    type: object
+    properties:
+      name: string
+      fans:
+        type: LongPagedList
+        genericTypes: [user, integer]
+
 
 /books:
   get:
@@ -145,3 +168,11 @@ types:
         body:
           application/json:
             type: car
+
+/simple/string/return:
+  get:
+    response:
+      200:
+        body:
+          text/html:
+            type: string

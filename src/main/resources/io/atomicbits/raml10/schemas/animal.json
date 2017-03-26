@@ -12,19 +12,7 @@
   },
   "oneOf": [
     {
-      "id": "http://atomicbits.io/raml10/cat.json#",
-      "type": "object",
-      "properties": {
-        "_type": {
-          "enum": [
-            "Cat"
-          ]
-        },
-        "name": {
-          "required": false,
-          "type": "string"
-        }
-      }
+      "$ref": "cat.json"
     },
     {
       "id": "http://atomicbits.io/raml10/dog.json#",

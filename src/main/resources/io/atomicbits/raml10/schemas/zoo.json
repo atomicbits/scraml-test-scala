@@ -13,6 +13,17 @@
       "items": {
         "$ref": "animal.json"
       }
+    },
+    "visitors": {
+      "$ref": "http://atomicbits.io/raml10/paged-list.json#",
+      "genericTypes": [
+        {
+          "$ref": "http://atomicbits.io/raml10/user.json"
+        },
+        {
+          "type": "integer"
+        }
+      ]
     }
   }
 }
