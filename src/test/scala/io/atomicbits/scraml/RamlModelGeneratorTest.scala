@@ -870,7 +870,6 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         post(urlEqualTo(s"/rest/animals/food"))
           .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
           .withRequestBody(
-//            equalTo("\"veggie\"")
             equalTo("veggie")
           )
           .willReturn(
