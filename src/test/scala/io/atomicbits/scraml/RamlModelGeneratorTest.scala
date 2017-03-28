@@ -860,6 +860,34 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
+  feature("A plain string post body should serialize without extra quotes.") {
+
+    scenario("serialization of a string post body") {
+
+      Given("a service expecting a body with a simple string value")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/animals/food"))
+          .withHeader("Content-Type", equalTo("application/json; charset=UTF-8"))
+          .withRequestBody(
+            equalTo("veggie")
+          )
+          .willReturn(
+            aResponse()
+              .withStatus(200)
+          )
+      )
+
+      When("we send a simple string object")
+      val futureResponse = client.rest.animals.food.post("veggie")
+
+      Then("that object field should be deserialized as a JsObject")
+      val response = Await.result(futureResponse, 2 seconds)
+      response.status shouldBe 200
+    }
+
+  }
+
   private def binaryData: Array[Byte] = {
     val data = 0 to 1023 map (_.toByte)
     Array[Byte](data: _*)
