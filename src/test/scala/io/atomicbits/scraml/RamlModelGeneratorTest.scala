@@ -888,6 +888,38 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
+  feature("Complex query parameter types should be serialized to json") {
+
+    scenario("An enumeration as query parameter type should serialize as its string value") {
+
+      Given("a service expecting an enumeration type as query parameter")
+
+      val dogs = List(
+        Dog(gender = "female", canBark = true, name = Some("Ziva")),
+        Dog(gender = "male", canBark   = true, name = Some("Olly"))
+      )
+
+      def dogListToJson()(implicit formatter: Format[List[Animal]]): String = {
+        formatter.writes(dogs).toString()
+      }
+
+      stubFor(
+        get(urlEqualTo(s"/rest/animals/byfood?food=rats"))
+          .withHeader("Accept", equalTo("application/json"))
+          .willReturn(aResponse()
+            .withBody(dogListToJson())
+            .withStatus(200)))
+
+      When("we send the query parameter as an enum type")
+      val futureResponse = client.rest.animals.byfood.get(food = Some(Food.rats))
+
+      Then("we should get the expected animal list as response")
+      val response = Await.result(futureResponse, 2 seconds)
+      response.status shouldBe 200
+    }
+
+  }
+
   private def binaryData: Array[Byte] = {
     val data = 0 to 1023 map (_.toByte)
     Array[Byte](data: _*)

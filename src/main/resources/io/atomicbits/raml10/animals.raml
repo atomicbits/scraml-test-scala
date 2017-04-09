@@ -84,19 +84,19 @@
           application/json:
             type: animal[]
 
-#/byfood:
-#  get:
-#    queryParameters:
-#      food?:
-#        description: The food the animal likes.
-#        enum:
-#          - rats
-#          - birds
-#          - beef
-#          - veggie
-#          - pork
-#    responses:
-#      200:
-#        body:
-#          application/json:
-#            type: animal[]
+/byfood:
+  get:
+    queryParameters:
+      food?:
+        description: The food the animal likes.
+        enum:
+          - rats
+          - birds
+          - beef
+          - veggie
+          - pork
+    responses:
+      200:
+        body:
+          application/json:
+            type: animal[]
