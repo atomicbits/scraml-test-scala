@@ -26,9 +26,9 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
 import io.atomicbits.raml10._
-import io.atomicbits.scraml.dsl.{ BinaryData, Response, StringPart }
+import io.atomicbits.raml10.dsl.scalaplay.{ BinaryData, Response, StringPart }
 import io.atomicbits.raml10.RamlTestClient._
-import io.atomicbits.scraml.dsl.client.ClientConfig
+import io.atomicbits.raml10.dsl.scalaplay.client.ClientConfig
 import org.scalatest.{ BeforeAndAfterAll, FeatureSpec, GivenWhenThen }
 import org.scalatest.Matchers._
 import play.api.libs.json._
