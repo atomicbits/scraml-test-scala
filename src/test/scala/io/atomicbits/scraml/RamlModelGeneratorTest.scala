@@ -500,7 +500,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       stubFor(
         post(urlEqualTo(s"/rest/animals/datafile/upload"))
-          .withRequestBody(equalTo(new String(binaryData)))
+          .withRequestBody(equalTo(new String(binaryData, "UTF-8")))
           .willReturn(
             aResponse()
               .withBody("""{"received":"OK"}""")
@@ -523,7 +523,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       stubFor(
         post(urlEqualTo(s"/rest/animals/datafile/upload"))
-          .withRequestBody(equalTo(new String(binaryData)))
+          .withRequestBody(equalTo(new String(binaryData, "UTF-8")))
           .willReturn(
             aResponse()
               .withBody("""{"received":"OK"}""")
@@ -546,7 +546,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       stubFor(
         post(urlEqualTo(s"/rest/animals/datafile/upload"))
-          .withRequestBody(equalTo(new String(binaryData)))
+          .withRequestBody(equalTo(new String(binaryData, "UTF-8")))
           .willReturn(
             aResponse()
               .withBody("""{"received":"OK"}""")
