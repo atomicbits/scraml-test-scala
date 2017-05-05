@@ -178,6 +178,31 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
+    scenario("test a form POST request using a typed form url encoded body") {
+
+      Given("a matching web service")
+
+      stubFor(
+        post(urlEqualTo(s"/rest/user/formurlencodedtype"))
+          .withHeader("Content-Type", equalTo("application/x-www-form-urlencoded; charset=UTF-8"))
+          .withHeader("Accept", equalTo("application/json")) // We expect the default media type here!
+          .withRequestBody(equalTo("""age=21&firstname=Foo&lastname=Bar"""))
+          .willReturn(
+            aResponse()
+              .withStatus(200)
+          )
+      )
+
+      When("execute the form POST request")
+      val eventualPostResponse =
+        client.rest.user.formurlencodedtype.post(SimpleForm(age = 21L, firstname = "Foo", lastname = "Bar"))
+
+      Then("we should get the correct response")
+
+      val postResponse = Await.result(eventualPostResponse, 2 seconds)
+      assertResult(200)(postResponse.status)
+    }
+
     scenario("test a PUT request") {
 
       Given("a matching web service")

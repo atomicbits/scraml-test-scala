@@ -29,6 +29,12 @@ types:
   car:                      !include schemas/relativeid/car.json
   engine:                   !include schemas/relativeid/engine.json
   fuel:                     !include schemas/relativeid/fuel.json
+  SimpleForm:
+    type: object
+    properties:
+      firstname: string
+      lastname: string
+      age: integer
   LongPagedList:
     type: object
     typeVariables: [T, U]
