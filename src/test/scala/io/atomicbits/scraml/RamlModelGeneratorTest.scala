@@ -186,7 +186,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         post(urlEqualTo(s"/rest/user/formurlencodedtype"))
           .withHeader("Content-Type", equalTo("application/x-www-form-urlencoded; charset=UTF-8"))
           .withHeader("Accept", equalTo("application/json")) // We expect the default media type here!
-          .withRequestBody(equalTo("""age=21&firstname=Foo&lastname=Bar"""))
+          .withRequestBody(equalTo("""firstname=Foo&lastname=Bar&age=21"""))
           .willReturn(
             aResponse()
               .withStatus(200)
@@ -195,7 +195,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("execute the form POST request")
       val eventualPostResponse =
-        client.rest.user.formurlencodedtype.post(SimpleForm(age = 21L, firstname = "Foo", lastname = "Bar"))
+        client.rest.user.formurlencodedtype.post(SimpleForm(age = Some(21L), firstname = "Foo", lastname = "Bar"))
 
       Then("we should get the correct response")
 
@@ -939,6 +939,27 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       val futureResponse = client.rest.animals.byfood.get(food = Some(Food.rats))
 
       Then("we should get the expected animal list as response")
+      val response = Await.result(futureResponse, 2 seconds)
+      response.status shouldBe 200
+    }
+
+  }
+
+  feature("queryString parameters as named type should be serialized a reqular query parameters") {
+
+    scenario("a typed queryString must be transformed into regular query parameters") {
+
+      Given("a service expecting some query parameters")
+
+      stubFor(
+        get(urlEqualTo(s"/rest/user/typedquerystring?firstname=Foo&lastname=Bar"))
+          .willReturn(aResponse()
+            .withStatus(200)))
+
+      When("we send the request with a typed queryString")
+      val futureResponse = client.rest.user.typedquerystring.get(queryString = SimpleForm(firstname = "Foo", lastname = "Bar"))
+
+      Then("we should get a 200 response")
       val response = Await.result(futureResponse, 2 seconds)
       response.status shouldBe 200
     }
