@@ -18,6 +18,9 @@
       hobbies?:
         description: The hobbies are an optional repeated query parameter
         type: string[]
+      b-day?:
+        type: birthday
+        description: ToDo - rename b-day to birthday and find out why we get a cyclic reference exception
     responses:
       200:
         body:

@@ -20,6 +20,8 @@ package io.atomicbits.scraml
 
 import java.io._
 import java.nio.charset.Charset
+import java.time.format.DateTimeFormatter
+import java.time.{LocalDate, LocalDateTime, LocalTime, OffsetDateTime}
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
@@ -27,14 +29,15 @@ import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
 import io.atomicbits.raml10._
 import io.atomicbits.raml10.dsl.scalaplay.{ BinaryData, Response, StringPart, RestException }
+import io.atomicbits.raml10.dsl.scalaplay.{Method => _, _}
 import io.atomicbits.raml10.RamlTestClient._
 import io.atomicbits.raml10.dsl.scalaplay.client.ClientConfig
-import org.scalatest.{ BeforeAndAfterAll, FeatureSpec, GivenWhenThen }
+import org.scalatest.{BeforeAndAfterAll, FeatureSpec, GivenWhenThen}
 import org.scalatest.Matchers._
 import play.api.libs.json._
 
-import scala.concurrent.{ Await, Future }
-import scala.language.{ postfixOps, reflectiveCalls }
+import scala.concurrent.{Await, Future}
+import scala.language.{postfixOps, reflectiveCalls}
 import scala.concurrent.duration._
 
 /**
@@ -92,17 +95,17 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       // '[]' url-encoded gives: %5B%5D
       stubFor(
-        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization%5B%5D=ESA&organization%5B%5D=NASA"))
+        get(urlEqualTo(s"/rest/user?b-day=1978-05-25&age=51.0&firstName=John%20C&organization%5B%5D=ESA&organization%5B%5D=NASA"))
           .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
           .willReturn(aResponse()
-            .withBody("""[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1"}]""")
+            .withBody("""[{"address": {"streetAddress": "Mulholland Drive", "city": "LA", "state": "California"}, "firstName":"John", "lastName": "Doe", "age": 21, "id": "1", "birthday": "1978-05-25"}]""")
             .withStatus(200)))
 
       When("execute a GET request")
 
       val eventualUserResponse: Future[List[User]] =
         userResource
-          .get(age = Some(51), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
+          .get(age = Some(51), bday = Some(DateOnly(LocalDate.parse("1978-05-25"))), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
           .asType
 
       Then("we should get the correct user object")
@@ -114,6 +117,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         firstName  = "John",
         lastName   = "Doe",
         id         = "1",
+        birthday   = DateOnly(date = LocalDate.parse("1978-05-25")),
         other      = None, // Some(Json.obj("text" -> JsString("foobar")))
         fancyfield = None
       )
@@ -265,6 +269,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         age        = 21,
         firstName  = "John",
         lastName   = "Doe",
+        birthday   = DateOnly(date = LocalDate.parse("1978-05-25")),
         id         = "1",
         fancyfield = None
       )
@@ -395,6 +400,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
         age        = 21,
         firstName  = "John",
         lastName   = "Doe",
+        birthday   = DateOnly(date = LocalDate.parse("1978-05-25")),
         id         = "1",
         fancyfield = None
       )
@@ -1043,6 +1049,37 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     }
 
   }
+
+  feature("request an object that contains different types of date fields") {
+
+    scenario("a service that returns an object with different types of date field") {
+
+      Given("a service returning an object containing different sorts of date fields")
+      stubFor(
+        get(urlEqualTo(s"/rest/zoo"))
+          .willReturn(
+            aResponse()
+              .withBody("""{"name":"Planckendael", "animals": [], "lunchtime": "12:30:00", "fireworks": "2015-07-04T21:00:00", "created": "2016-02-28T16:41:41.090Z", "If-Modified-Since": "Sun, 28 Feb 2016 16:41:41 GMT" }""")
+            .withStatus(200)))
+
+      When("we call the service")
+      val futureResponse = client.rest.zoo.get().asType
+
+      Then("we receive the expected date formats")
+      val zoo: Zoo = Await.result(futureResponse, 2 seconds)
+      val created: DateTimeRFC3339 = zoo.created // ToDo: fix(?) the dates are now all required by default when they appear in json-schema
+      val fireworks: DateTimeOnly = zoo.fireworks
+      val lunchtime: TimeOnly = zoo.lunchtime
+      val ifModifiedSince: DateTimeRFC2616 = zoo.IfModifiedSince.get
+
+      created.dateTime.shouldEqual(OffsetDateTime.parse("2016-02-28T16:41:41.090Z"))
+      fireworks.dateTime.shouldEqual(LocalDateTime.parse("2015-07-04T21:00:00"))
+      lunchtime.time.shouldEqual(LocalTime.parse("12:30:00"))
+      ifModifiedSince.dateTime.shouldEqual(OffsetDateTime.parse("Sun, 28 Feb 2016 16:41:41 GMT", DateTimeFormatter.RFC_1123_DATE_TIME))
+    }
+
+  }
+
 
   private def binaryData: Array[Byte] = {
     val data = 0 to 1023 map (_.toByte)

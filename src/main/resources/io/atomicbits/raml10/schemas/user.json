@@ -32,6 +32,10 @@
       "required": true,
       "type": "integer"
     },
+    "birthday": {
+      "type": "date-only",
+      "example": "2015-05-23"
+    },
     "homePage": {
       "required": false,
       "$ref": "http://atomicbits.io/raml10/link.json#"

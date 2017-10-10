@@ -13,6 +13,12 @@ lazy val scramlTestLicense =
     |MXVuWWMxcW9WQlJjSnYKSWwvMjZqWDUzZURneXMvbFFOdEVYUjE1WjlyU2Y3dk00SW95V3c9PQ==
   """.stripMargin
 
+lazy val scramlTestFreeLicense =
+  """
+    |We, Atomic BITS,
+    |use the free scraml license in this project without any intend to serve commercial purposes for ourselves or anyone else.
+  """.stripMargin
+
 // Omit the file header when using the AGPL license.
 lazy val scramlFileHeader =
   """
@@ -32,7 +38,7 @@ lazy val helloWorldApi = Project(
         file("modules/raml-examples/src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
       scramlLanguage in scraml in Compile := "scala", // this is the default in the sbt plugin, so can be omitted
       scramlApiPackage in scraml in Compile := "org.raml.examples.helloworld", // our path to the main raml file is too short to use it as a package name (helloworld/helloworld.raml), so we have to declare our own package name
-      scramlLicenseKey in scraml in Compile := scramlTestLicense, // omit when using the AGPL license
+      scramlLicenseKey in scraml in Compile := scramlTestFreeLicense, // omit when using the AGPL license
       scramlClassHeader in scraml in Compile := scramlFileHeader // omit when using the AGPL license
     )
 )
@@ -46,7 +52,7 @@ lazy val root = Project(
   settings = projSettings(scramlDeps ++ testDeps) ++
     Seq(
       scramlRamlApi in scraml in Compile := "io/atomicbits/raml10/RamlTestClient.raml",
-      scramlLicenseKey in scraml in Compile := scramlTestLicense, // omit when using the AGPL license
+      scramlLicenseKey in scraml in Compile := scramlTestFreeLicense, // omit when using the AGPL license
       scramlClassHeader in scraml in Compile := scramlFileHeader // omit when using the AGPL license
     )
 ).aggregate(helloWorldApi)

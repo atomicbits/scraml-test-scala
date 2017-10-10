@@ -14,6 +14,4 @@ object Dependencies {
     "com.github.tomakehurst" % "wiremock"          % "1.56" % "test"
   )
 
-
-
 }

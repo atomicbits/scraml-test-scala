@@ -9,7 +9,7 @@ object BuildSettings {
 
   val Version = "0.7.0" + snapshotSuffix
 
-  val ScalaVersion = "2.11.8"
+  val ScalaVersion = "2.11.11"
 
   val scalacBuildOptions = Seq(
     "-unchecked",
