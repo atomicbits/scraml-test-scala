@@ -51,13 +51,13 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
   val wireMockServer = new WireMockServer(wireMockConfig().port(port))
 
   val client = RamlTestClient(
-    host           = host,
-    port           = port,
-    protocol       = "http",
+    host = host,
+    port = port,
+    protocol = "http",
     defaultHeaders = Map(), // "Accept" -> "application/vnd-v1.0+json"
-    prefix         = None,
-    config         = ClientConfig(requestCharset = Charset.forName("UTF-8")),
-    clientFactory  = None
+    prefix = None,
+    config = ClientConfig(requestCharset = Charset.forName("UTF-8")),
+    clientFactory = None
   )
 
   override def beforeAll() = {
@@ -86,7 +86,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   feature("Use the DSL based on a RAML specification") {
 
-    val userResource       = client.rest.user
+    val userResource = client.rest.user
     val userFoobarResource = userResource.userid("foobar")
 
     scenario("test a successful GET request") {
@@ -105,20 +105,21 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val eventualUserResponse: Future[List[User]] =
         userResource
-          .get(age = Some(51), bday = Some(DateOnly(LocalDate.parse("1978-05-25"))), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
+          .get(age = Some(51), bday = Some(DateOnly(LocalDate
+            .parse("1978-05-25"))), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
           .asType
 
       Then("we should get the correct user object")
 
       val user = User(
-        homePage   = None,
-        address    = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
-        age        = 21,
-        firstName  = "John",
-        lastName   = "Doe",
-        id         = "1",
-        birthday   = DateOnly(date = LocalDate.parse("1978-05-25")),
-        other      = None, // Some(Json.obj("text" -> JsString("foobar")))
+        homePage = None,
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
+        age = 21,
+        firstName = "John",
+        lastName = "Doe",
+        id = "1",
+        birthday = DateOnly(date = LocalDate.parse("1978-05-25")),
+        other = None, // Some(Json.obj("text" -> JsString("foobar")))
         fancyfield = None
       )
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
@@ -214,10 +215,10 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .withHeader("Accept", equalTo("application/json")) // We expect the default media type here!
           .withRequestBody(equalTo("""text=Hello-Foobar""")) // """text=Hello%20Foobar"""
           .willReturn(
-            aResponse()
-              .withBody("{\"message\": \"Post OK\"}")
-              .withStatus(200)
-          )
+          aResponse()
+            .withBody("{\"message\": \"Post OK\"}")
+            .withStatus(200)
+        )
       )
 
       When("execute a form POST request")
@@ -264,13 +265,13 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("a matching web service")
 
       val user = User(
-        homePage   = Some(Link("http://foo.bar", Method.GET, None)),
-        address    = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
-        age        = 21,
-        firstName  = "John",
-        lastName   = "Doe",
-        birthday   = DateOnly(date = LocalDate.parse("1978-05-25")),
-        id         = "1",
+        homePage = Some(Link("http://foo.bar", Method.GET, None)),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
+        age = 21,
+        firstName = "John",
+        lastName = "Doe",
+        birthday = DateOnly(date = LocalDate.parse("1978-05-25")),
+        id = "1",
         fancyfield = None
       )
 
@@ -395,13 +396,13 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("a form upload web service")
 
       val user = User(
-        homePage   = Some(Link("http://foo.bar", Method.GET, None)),
-        address    = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
-        age        = 21,
-        firstName  = "John",
-        lastName   = "Doe",
-        birthday   = DateOnly(date = LocalDate.parse("1978-05-25")),
-        id         = "1",
+        homePage = Some(Link("http://foo.bar", Method.GET, None)),
+        address = Some(UserDefinitionsAddress(streetAddress = "Mulholland Drive", city = "LA", state = "California")),
+        age = 21,
+        firstName = "John",
+        lastName = "Doe",
+        birthday = DateOnly(date = LocalDate.parse("1978-05-25")),
+        id = "1",
         fancyfield = None
       )
 
@@ -443,7 +444,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       Given("a form upload web service")
       val dogs = List(
         Dog(gender = "female", canBark = true, name = Some("Ziva")),
-        Dog(gender = "male", canBark   = true, name = Some("Olly"))
+        Dog(gender = "male", canBark = true, name = Some("Olly"))
       )
 
       def dogListToJson()(implicit formatter: Format[List[Animal]]) = {
@@ -487,7 +488,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       )
 
       val dogPostResult = client.rest.user.userid("124").dogs.post(dog)
-      val response      = Await.result(dogPostResult, 2 seconds)
+      val response = Await.result(dogPostResult, 2 seconds)
 
       assertResult(response.status)(201)
     }
@@ -521,8 +522,8 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     scenario("test the use generic classes") {
 
       Given("a web service providing the dogs of a user")
-      val dog       = Dog(gender                   = "female", canBark = true, name       = Some("Ziva"))
-      val pagedList = PagedList[Dog, String](count = 1, elements       = List(dog), owner = Option("Peter"))
+      val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
+      val pagedList = PagedList[Dog, String](count = 1, elements = List(dog), owner = Option("Peter"))
 
       /**
         * val json = s"""{"count":1,"elements":[{"gender":"female","canBark":true,"name":"Ziva"}],"owner":"Peter"}"""
@@ -592,7 +593,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       )
 
       When("a client uploads the data")
-      val file                                        = new File(this.getClass.getResource("/io/atomicbits/scraml/binaryData.bin").toURI)
+      val file = new File(this.getClass.getResource("/io/atomicbits/scraml/binaryData.bin").toURI)
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(file)
 
       Then("then the data should be uploaded")
@@ -615,7 +616,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       )
 
       When("a client uploads the data")
-      val inputStream: InputStream                    = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
+      val inputStream: InputStream = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(inputStream)
 
       Then("then the data should be uploaded")
@@ -639,7 +640,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("a client uploads the data")
       val inputStream: InputStream = this.getClass.getResourceAsStream("/io/atomicbits/scraml/binaryData.bin")
-      val array                    = new Array[Byte](1024)
+      val array = new Array[Byte](1024)
       inputStream.read(array, 0, 1024)
       inputStream.close()
       val eventualResponse: Future[Response[JsValue]] = client.rest.animals.datafile.upload.post(array)
@@ -741,31 +742,31 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
             .withStatus(200)))
 
       When("we request the list of books")
-      val futureBooks       = booksResource.get.asType
+      val futureBooks = booksResource.get.asType
       val books: List[Book] = Await.result(futureBooks, 2 seconds)
 
       Then("we should get the expected books")
       //.head.author shouldBe Author(firstName = "James", lastName = "Corey")
       val expectedBooks = Set(
-        BookImpl(title  = "Leviathan Wakes",
-                 author = Author(firstName = "James", lastName = "Corey"),
-                 genre  = "SciFi",
-                 isbn   = "978-0-316-12908-4"),
+        BookImpl(title = "Leviathan Wakes",
+          author = Author(firstName = "James", lastName = "Corey"),
+          genre = "SciFi",
+          isbn = "978-0-316-12908-4"),
         ComicBookImpl(
-          title   = "The Clone Conspiracy",
-          author  = Author(firstName = "Peter", lastName = "David"),
-          genre   = "SciFi",
-          isbn    = "75960608623800111",
-          hero    = "Spiderman",
+          title = "The Clone Conspiracy",
+          author = Author(firstName = "Peter", lastName = "David"),
+          genre = "SciFi",
+          isbn = "75960608623800111",
+          hero = "Spiderman",
           villain = "Mr. Badguy"
         ),
         SciFiComicBook(
-          title   = "The Clone Conspiracy",
-          author  = Author(firstName = "Peter", lastName = "David"),
-          genre   = "SciFi",
-          isbn    = "75960608623800111",
-          hero    = "Spiderman",
-          era     = "1990",
+          title = "The Clone Conspiracy",
+          author = Author(firstName = "Peter", lastName = "David"),
+          genre = "SciFi",
+          isbn = "75960608623800111",
+          hero = "Spiderman",
+          era = "1990",
           villain = "Mr. Badguy"
         )
       )
@@ -790,9 +791,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("we post a book")
       val book = BookImpl(title = "Leviathan Wakes",
-                          author = Author(firstName = "James", lastName = "Corey"),
-                          genre  = "SciFi",
-                          isbn   = "978-0-316-12908-4")
+        author = Author(firstName = "James", lastName = "Corey"),
+        genre = "SciFi",
+        isbn = "978-0-316-12908-4")
       val futureBookResponse = booksResource.post(book)
 
       Then("we should get the expected success response")
@@ -814,7 +815,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
             .withStatus(200)))
 
       When("we request the list of comic books")
-      val futureBooks            = comicBooksResource.get.asType
+      val futureBooks = comicBooksResource.get.asType
       val books: List[ComicBook] = Await.result(futureBooks, 2 seconds)
 
       Then("we should get the expected comic books")
@@ -843,11 +844,11 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("we post a comic book")
       val book = ComicBookImpl(
-        title   = "The Clone Conspiracy",
-        author  = Author(firstName = "Peter", lastName = "David"),
-        genre   = "SciFi",
-        isbn    = "75960608623800111",
-        hero    = "Spiderman",
+        title = "The Clone Conspiracy",
+        author = Author(firstName = "Peter", lastName = "David"),
+        genre = "SciFi",
+        isbn = "75960608623800111",
+        hero = "Spiderman",
         villain = "Mr. Badguy"
       )
       val futureBookResponse = comicBooksResource.post(book)
@@ -871,7 +872,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
             .withStatus(200)))
 
       When("we request the list of scifi comic books")
-      val futureBooks            = scifiComicBooksResource.get.asType
+      val futureBooks = scifiComicBooksResource.get.asType
       val books: List[ComicBook] = Await.result(futureBooks, 2 seconds)
 
       Then("we should get the expected comic books")
@@ -900,12 +901,12 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("we post a SciFi comic book")
       val book = SciFiComicBook(
-        title   = "The Clone Conspiracy",
-        author  = Author(firstName = "Peter", lastName = "David"),
-        genre   = "SciFi",
-        isbn    = "75960608623800111",
-        hero    = "Spiderman",
-        era     = "1990",
+        title = "The Clone Conspiracy",
+        author = Author(firstName = "Peter", lastName = "David"),
+        genre = "SciFi",
+        isbn = "75960608623800111",
+        hero = "Spiderman",
+        era = "1990",
         villain = "Mr. Badguy"
       )
       val futureBookResponse = scifiComicBooksResource.post(book)
@@ -960,7 +961,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       When("we send an object containing an empty object field")
       val emptyObjectField = EmptyObjectField(message = "OK", data = JsObject(Seq("anything" -> JsNumber(123))))
-      val futureResponse   = client.rest.emptyobject.post(emptyObjectField)
+      val futureResponse = client.rest.emptyobject.post(emptyObjectField)
 
       Then("that object field should be deserialized as a JsObject")
       val response = Await.result(futureResponse, 2 seconds)
@@ -1005,7 +1006,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
       val dogs = List(
         Dog(gender = "female", canBark = true, name = Some("Ziva")),
-        Dog(gender = "male", canBark   = true, name = Some("Olly"))
+        Dog(gender = "male", canBark = true, name = Some("Olly"))
       )
 
       def dogListToJson()(implicit formatter: Format[List[Animal]]): String = {
@@ -1060,7 +1061,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
           .willReturn(
             aResponse()
               .withBody("""{"name":"Planckendael", "animals": [], "lunchtime": "12:30:00", "fireworks": "2015-07-04T21:00:00", "created": "2016-02-28T16:41:41.090Z", "If-Modified-Since": "Sun, 28 Feb 2016 16:41:41 GMT" }""")
-            .withStatus(200)))
+              .withStatus(200)))
 
       When("we call the service")
       val futureResponse = client.rest.zoo.get().asType
@@ -1080,6 +1081,87 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
+  feature("#141 (bugfix) we send and receive an object with 23 fields, then that must not fail") {
+
+    scenario("we use a service that receives and returns an object with 23 fields") {
+
+      Given("a service that receives and returns an object with 23 fields")
+
+      val twentyThreeFieldsJson =
+        """{
+          |"eight":"8",
+          |"eighteen":"18",
+          |"eleven":"11",
+          |"fifteen":"15",
+          |"five":"5",
+          |"four":"4",
+          |"fourteen":"14",
+          |"nine":"9",
+          |"nineteen":"19",
+          |"one":"1",
+          |"seven":"7",
+          |"seventeen":"17",
+          |"six":"6",
+          |"sixteen":"16",
+          |"ten":"10",
+          |"thirteen":"13",
+          |"three":"3",
+          |"twelve":"12",
+          |"twenty":"20",
+          |"twentyone":"21",
+          |"twentythree":"23",
+          |"twentytwo":"22",
+          |"two":"2"
+          |}""".stripMargin
+
+      stubFor(
+        post(urlEqualTo(s"/rest/twentythreefields"))
+          .withRequestBody(
+            equalToJson(twentyThreeFieldsJson)
+          )
+          .willReturn(
+            aResponse()
+              .withBody(twentyThreeFieldsJson)
+              .withStatus(200)))
+
+      When("we call the service")
+      val twentyThreeFields =
+        TwentyThreeFields(
+          one = "1",
+          two = "2",
+          three = "3",
+          four = "4",
+          five = "5",
+          six = "6",
+          seven = "7",
+          eight = "8",
+          nine = "9",
+          ten = "10",
+          eleven = "11",
+          twelve = "12",
+          thirteen = "13",
+          fourteen = "14",
+          fifteen = "15",
+          sixteen = "16",
+          seventeen = "17",
+          eighteen = "18",
+          nineteen = "19",
+          twenty = "20",
+          twentyone = "21",
+          twentytwo = "22",
+          twentythree = "23"
+        )
+
+      val futureTwentyThree = client.rest.twentythreefields.post(twentyThreeFields).asType
+
+      Then("we receive the expected object with 23 fields")
+      val receivedTwentyThree = Await.result(futureTwentyThree, 2 seconds)
+
+      receivedTwentyThree.shouldEqual(twentyThreeFields)
+    }
+
+  }
+
 
   private def binaryData: Array[Byte] = {
     val data = 0 to 1023 map (_.toByte)
@@ -1087,7 +1169,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
   }
 
   private def createBinaryDataFile = {
-    val file             = new File("binaryData.bin")
+    val file = new File("binaryData.bin")
     val fileOutputStream = new FileOutputStream(file)
     fileOutputStream.write(binaryData)
     fileOutputStream.flush()

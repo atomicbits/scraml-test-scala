@@ -7,7 +7,7 @@ object BuildSettings {
 
   val snapshotSuffix = "-SNAPSHOT"
 
-  val Version = "0.7.0" + snapshotSuffix
+  val Version = "0.8.0" + snapshotSuffix
 
   val ScalaVersion = "2.11.11"
 

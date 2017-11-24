@@ -113,6 +113,56 @@ types:
   If-Modified-Since:
     type: datetime
     format: rfc2616 # this time it's required, otherwise, the example format is invalid
+  TwentyThreeFields:
+    type: object
+    properties:
+      one:
+        type: string
+      two:
+        type: string
+      three:
+        type: string
+      four:
+        type: string
+      five:
+        type: string
+      six:
+        type: string
+      seven:
+        type: string
+      eight:
+        type: string
+      nine:
+        type: string
+      ten:
+        type: string
+      eleven:
+        type: string
+      twelve:
+        type: string
+      thirteen:
+        type: string
+      fourteen:
+        type: string
+      fifteen:
+        type: string
+      sixteen:
+        type: string
+      seventeen:
+        type: string
+      eighteen:
+        type: string
+      nineteen:
+        type: string
+      twenty:
+        type: string
+      twentyone:
+        type: string
+      twentytwo:
+        type: string
+      twentythree:
+        type: string
+
 
 
 /books:
@@ -207,3 +257,14 @@ types:
         body:
           application/json:
             type: zoo
+
+/rest/twentythreefields:
+  post:
+    body:
+      application/json:
+        type: TwentyThreeFields
+    responses:
+      200:
+        body:
+          application/json:
+            type: TwentyThreeFields
