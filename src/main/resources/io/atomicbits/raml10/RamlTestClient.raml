@@ -162,6 +162,19 @@ types:
         type: string
       twentythree:
         type: string
+  Mamal:
+    type: object
+    properties:
+      birthday: birthday
+  Person:
+    type: Mamal
+    properties:
+      hobbies: string[]
+      lunchtime: lunchtime
+  Adult:
+    type: Person
+    properties:
+      job: string
 
 
 
@@ -268,3 +281,12 @@ types:
         body:
           application/json:
             type: TwentyThreeFields
+
+# Todo: fix root path call
+#/:
+#  get:
+#    description: Get the base URL
+#    responses:
+#      200:
+#        body:
+#          text/html:

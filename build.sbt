@@ -43,7 +43,22 @@ lazy val helloWorldApi = Project(
     )
 )
 
-
+lazy val ramlTypescript = Project(
+  id = "raml-typescript",
+  base = file("modules/raml-typescript"),
+  settings = projSettings(scramlDeps ++ testDeps) ++
+    Seq(
+      scramlRamlApi in scraml in Compile := "io/atomicbits/raml10/RamlTestClient.raml", // the path the the main raml file of the api
+      scramlBaseDir in scraml in Compile :=
+        file("src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
+      scramlLanguage in scraml in Compile := "TypeScript",
+      scramlApiPackage in scraml in Compile := "io.atomicbits", // our path to the main raml file is too short to use it as a package name (helloworld/helloworld.raml), so we have to declare our own package name
+      scramlLicenseKey in scraml in Compile := scramlTestFreeLicense, // omit when using the AGPL license
+      scramlClassHeader in scraml in Compile := scramlFileHeader, // omit when using the AGPL license
+      scramlDestinationDir in scraml in Compile := file("modules/raml-typescript/src/public"),
+      scramlSingleSourceFile in scraml in Compile := "helloworld.d.ts"
+    )
+)
 
 // This is the main project with the official Scraml tests.
 lazy val root = Project(
@@ -55,4 +70,4 @@ lazy val root = Project(
       scramlLicenseKey in scraml in Compile := scramlTestFreeLicense, // omit when using the AGPL license
       scramlClassHeader in scraml in Compile := scramlFileHeader // omit when using the AGPL license
     )
-).aggregate(helloWorldApi)
+).aggregate(helloWorldApi, ramlTypescript)
