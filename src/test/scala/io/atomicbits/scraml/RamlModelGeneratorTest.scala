@@ -26,7 +26,7 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
 import io.atomicbits.raml10._
-import io.atomicbits.raml10.dsl.scalaplay.{ BinaryData, Response, StringPart }
+import io.atomicbits.raml10.dsl.scalaplay.{ BinaryData, Response, StringPart, RestException }
 import io.atomicbits.raml10.RamlTestClient._
 import io.atomicbits.raml10.dsl.scalaplay.client.ClientConfig
 import org.scalatest.{ BeforeAndAfterAll, FeatureSpec, GivenWhenThen }
@@ -146,6 +146,58 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       val userResponse = Await.result(eventualUserResponse, 2 seconds)
       assertResult(errorMessage)(userResponse.stringBody.get)
       assertResult(500)(userResponse.status)
+
+      try {
+        val userResponseAsType = Await.result(eventualUserResponse.asType, 2 seconds)
+      } catch {
+        case e:RestException => e.status shouldBe 500
+        case any:Throwable => fail(s"Should throw RestException but was $any")
+      }
+    }
+
+    scenario("the DSL returns a RestException when using the as(Type|Json) methods on the Future Response") {
+
+      Given("a matching web service")
+
+      val errorMessage = "Oops"
+
+      // '[]' url-encoded gives: %5B%5D
+      stubFor(
+        get(urlEqualTo(s"/rest/user?age=51.0&firstName=John%20C&organization%5B%5D=ESA&organization%5B%5D=NASA"))
+          .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
+          .willReturn(aResponse()
+            .withBody(errorMessage)
+            .withStatus(500)))
+
+      When("execute a GET request that returns a non 200 code")
+
+      val eventualUserResponse: Future[Response[List[User]]] =
+        userResource
+          .get(age = Some(51), firstName = Some("John C"), lastName = None, organization = List("ESA", "NASA"))
+
+      Then("we should get the failure exception when using the as* methods")
+
+      try {
+        val userResponseAsType = Await.result(eventualUserResponse.asType, 2 seconds)
+        fail(s"asType should throw for non 200 code")
+      } catch {
+        case e:RestException => e.status shouldBe 500
+        case any:Throwable => fail(s"Should throw RestException but was $any")
+      }
+
+      try {
+        val userResponseAsType = Await.result(eventualUserResponse.asJson, 2 seconds)
+        fail(s"asJson should throw for non 200 code")
+      } catch {
+        case e:RestException => e.status shouldBe 500
+        case any:Throwable => fail(s"Should throw RestException but was $any")
+      }
+
+      try {
+        val userResponseAsType = Await.result(eventualUserResponse.asString, 2 seconds)
+      } catch {
+        case any:Throwable => fail(s"asString won't fail since we still had a non binary response")
+      }
     }
 
     scenario("test a form POST request") {
@@ -635,6 +687,32 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       val response = Await.result(eventualResponse, 2 seconds)
       assertResult(200)(response.status)
       assertResult(binaryData)(response.body.get.asBytes)
+    }
+
+
+    scenario("download binary data but response is failed") {
+
+      Given("a service responds with binary data")
+
+      stubFor(
+        get(urlEqualTo(s"/rest/animals/datafile/download"))
+          .willReturn(
+            aResponse()
+              .withBody(binaryData)
+              .withStatus(500)
+          )
+      )
+
+      When("a client requests the download but it fails")
+      val eventualResponse: Future[Response[BinaryData]] = client.rest.animals.datafile.download.get()
+
+      Then("the exception should be passed")
+      try {
+        val userResponseAsType = Await.result(eventualResponse.asString, 2 seconds)
+      } catch {
+        case e:RestException => e.status shouldBe 500
+        case any:Throwable => fail(s"asString should fail because we had a binary response")
+      }
     }
 
   }

@@ -1,3 +1,3 @@
-addSbtPlugin("io.atomicbits" % "scraml-sbt-plugin" % "0.7.0-M1")
+addSbtPlugin("io.atomicbits" % "scraml-sbt-plugin" % "0.8.0-SNAPSHOT")
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
