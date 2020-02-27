@@ -1014,14 +1014,14 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       }
 
       stubFor(
-        get(urlEqualTo(s"/rest/animals/byfood?food=rats"))
+        get(urlEqualTo(s"/rest/animals/byfood?food=rats&type=yummy"))
           .withHeader("Accept", equalTo("application/json"))
           .willReturn(aResponse()
             .withBody(dogListToJson())
             .withStatus(200)))
 
       When("we send the query parameter as an enum type")
-      val futureResponse = client.rest.animals.byfood.get(food = Some(Food.rats))
+      val futureResponse = client.rest.animals.byfood.get(food = Some(Food.rats), `type` = "yummy")
 
       Then("we should get the expected animal list as response")
       val response = Await.result(futureResponse, 2 seconds)

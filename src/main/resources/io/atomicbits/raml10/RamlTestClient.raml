@@ -175,7 +175,17 @@ types:
     type: Person
     properties:
       job: string
-
+  NestedBbox:
+    type: array
+    items:
+      type: array
+      items:
+        type: array
+        items: number
+  BboxContainer:
+    type: object
+    properties:
+      bbox: NestedBbox
 
 
 /books:
