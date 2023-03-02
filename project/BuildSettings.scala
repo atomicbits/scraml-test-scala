@@ -7,10 +7,10 @@ object BuildSettings {
 
   val snapshotSuffix = "-SNAPSHOT"
 
-  val Version = "0.8.0" + snapshotSuffix
+  val Version = "0.9.1" + snapshotSuffix
 
   // val ScalaVersion = "2.12.10"
-  val ScalaVersion = "2.13.1"
+  val ScalaVersion = "2.13.10"
 
   val scalacBuildOptions = Seq(
     "-unchecked",
@@ -19,16 +19,16 @@ object BuildSettings {
     "-Xlint:-infer-any",
     "-encoding",
     "UTF-8",
-    "-target:jvm-1.8",
-    "-Ybackend:GenBCode",
-    "-Ydelambdafy:method"
+    "-release:11",
+    "-Xfatal-warnings",
+    "-Wconf:src=src_managed/.*:silent" // https://stackoverflow.com/questions/22722449/how-to-make-sbt-not-reporting-compilation-warnings-for-generated-code
   )
 
   def projSettings(dependencies: Seq[ModuleID]) = {
     projectSettings(dependencies) ++ publishSettings
   }
 
-  def projectSettings(extraDependencies: Seq[ModuleID] = Seq()): Seq[sbt.Def.Setting[_]] = Seq(
+  def projectSettings(extraDependencies: Seq[ModuleID] = Seq()): Seq[sbt.Def.Setting[_]] = defaultSettings ++ Seq(
     organization := Organization,
     version := Version,
     isSnapshot := Version.endsWith(snapshotSuffix),

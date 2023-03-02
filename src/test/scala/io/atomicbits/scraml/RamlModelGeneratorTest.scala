@@ -19,9 +19,9 @@
 package io.atomicbits.scraml
 
 import java.io._
-import java.nio.charset.Charset
+import java.nio.charset.{ Charset, StandardCharsets }
 import java.time.format.DateTimeFormatter
-import java.time.{LocalDate, LocalDateTime, LocalTime, OffsetDateTime}
+import java.time.{ LocalDate, LocalDateTime, LocalTime, OffsetDateTime }
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
@@ -29,21 +29,22 @@ import com.github.tomakehurst.wiremock.client.WireMock._
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration._
 import io.atomicbits.raml10._
 import io.atomicbits.raml10.dsl.scalaplay.{ BinaryData, Response, StringPart, RestException }
-import io.atomicbits.raml10.dsl.scalaplay.{Method => _, _}
+import io.atomicbits.raml10.dsl.scalaplay.{ Method => _, _ }
 import io.atomicbits.raml10.RamlTestClient._
 import io.atomicbits.raml10.dsl.scalaplay.client.ClientConfig
-import org.scalatest.{BeforeAndAfterAll, FeatureSpec, GivenWhenThen}
-import org.scalatest.Matchers._
+import org.scalatest.{ BeforeAndAfterAll, GivenWhenThen }
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers._
 import play.api.libs.json._
 
-import scala.concurrent.{Await, Future}
-import scala.language.{postfixOps, reflectiveCalls}
+import scala.concurrent.{ Await, Future }
+import scala.language.{ postfixOps, reflectiveCalls }
 import scala.concurrent.duration._
 
 /**
   * Created by peter on 17/05/15, Atomic BITS bvba (http://atomicbits.io).
   */
-class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeAndAfterAll {
+class RamlModelGeneratorTest extends AnyFeatureSpec with GivenWhenThen with BeforeAndAfterAll {
 
   val port = 8281
   val host = "localhost"
@@ -70,9 +71,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     client.close()
   }
 
-  feature("Test some specific TO serialization issues that gave trouble at some point") {
+  Feature("Test some specific TO serialization issues that gave trouble at some point") {
 
-    scenario("test required fields in an inline object definition") {
+    Scenario("test required fields in an inline object definition") {
 
       Given("an attributes class containing an inline attributes map object with optional fields")
       When("we create such a data structure")
@@ -84,12 +85,12 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("Use the DSL based on a RAML specification") {
+  Feature("Use the DSL based on a RAML specification") {
 
     val userResource = client.rest.user
     val userFoobarResource = userResource.userid("foobar")
 
-    scenario("test a successful GET request") {
+    Scenario("test a successful GET request") {
 
       Given("a matching web service")
 
@@ -126,7 +127,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(user)(userResponse.head)
     }
 
-    scenario("test a failed GET request") {
+    Scenario("test a failed GET request") {
 
       Given("a matching web service")
 
@@ -160,7 +161,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       }
     }
 
-    scenario("the DSL returns a RestException when using the as(Type|Json) methods on the Future Response") {
+    Scenario("the DSL returns a RestException when using the as(Type|Json) methods on the Future Response") {
 
       Given("a matching web service")
 
@@ -205,7 +206,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       }
     }
 
-    scenario("test a form POST request") {
+    Scenario("test a form POST request") {
 
       Given("a matching web service")
 
@@ -235,7 +236,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
-    scenario("test a form POST request using a typed form url encoded body") {
+    Scenario("test a form POST request using a typed form url encoded body") {
 
       Given("a matching web service")
 
@@ -260,7 +261,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(postResponse.status)
     }
 
-    scenario("test a PUT request") {
+    Scenario("test a PUT request") {
 
       Given("a matching web service")
 
@@ -314,7 +315,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
-    scenario("test a DELETE request") {
+    Scenario("test a DELETE request") {
 
       Given("a matching web service")
 
@@ -338,7 +339,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(deleteResponse.status)
     }
 
-    scenario("test a set header request") {
+    Scenario("test a set header request") {
 
       Given("a matching web service")
 
@@ -366,32 +367,102 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(deleteResponse.status)
     }
 
-    scenario("test a multipart/form-data POST request") {
-
+    Scenario("test a multipart/form-data POST request") {
       // http://localhost:8281/rest/user/upload	POST	headers:	Accept:application/vnd-v1.0+json	Content-Type:multipart/form-data
       Given("a form upload web service")
       stubFor(
         post(urlEqualTo(s"/rest/user/up-load"))
-          .withHeader("Content-Type", equalTo("multipart/form-data; charset=UTF-8"))
-          .withHeader("Accept", equalTo("application/vnd-v1.0+json"))
+          .withHeader("Content-Type", containing("multipart/form-data; charset=UTF-8"))
+          .withHeader("Accept", equalTo("application/json"))
+          .withMultipartRequestBody(
+            aMultipart("test")
+              .withBody(equalTo("string part value"))
+          )
           .willReturn(
             aResponse()
-              .withBody("Post OK")
+              .withBody("""{"message":"Post OK"}""")
               .withStatus(200)
           )
       )
 
       When("a multipart/form-data POST request happens")
-      val multipartFormPostResponse =
-        client.rest.user.upload.post(List(StringPart(name = "test", value = "string part value"))).asType
+      val multipartFormPostResponse = client.rest.user.upload
+        .post(List(StringPart(name = "test", value = "string part value")))
+        .asString
 
       Then("we should get the correct response")
-
-      //      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
-      //      assertResult("Post OK")(putResponse)
+      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
+      assertResult("""{"message":"Post OK"}""")(putResponse)
     }
 
-    scenario("test Lists as request and response body") {
+    Scenario("test a multipart/form-data POST request using ByteArrayPart with fileName") {
+      val content = "content part value"
+
+      Given("a form upload web service")
+      stubFor(
+        post(urlEqualTo(s"/rest/user/up-load"))
+          .withHeader("Content-Type", containing("multipart/form-data; charset=UTF-8"))
+          .withHeader("Accept", equalTo("application/json"))
+          .withMultipartRequestBody(
+            aMultipart()
+              .withName("test")
+              .withHeader("Content-Disposition", containing("""filename="test.txt""""))
+              .withHeader("Content-Type", equalTo("text/plain; charset=UTF-8"))
+              .withHeader("Content-ID", equalTo("theContentId"))
+              .withBody(equalTo(content))
+          )
+          .willReturn(
+            aResponse()
+              .withBody("""{"message":"Post OK"}""")
+              .withStatus(200)
+          )
+      )
+
+      When("a multipart/form-data POST request happens")
+      val multipartFormPostResponse = client.rest.user.upload
+        .post(List(ByteArrayPart("test", content.getBytes(StandardCharsets.UTF_8), fileName = Some("test.txt"), contentId = Some("theContentId"))))
+        .asString
+      Then("we should get the correct response")
+      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
+      //Thread.sleep(60 * 1000) // --> http://localhost:8281/__admin/requests
+      assertResult("""{"message":"Post OK"}""")(putResponse)
+    }
+
+    Scenario("test a multipart/form-data POST request using InputStream") {
+      val content = "content part value"
+
+      Given("a form upload web service")
+      stubFor(
+        post(urlEqualTo(s"/rest/user/up-load"))
+          .withHeader("Content-Type", containing("multipart/form-data; charset=UTF-8"))
+          .withHeader("Accept", equalTo("application/json"))
+          .withMultipartRequestBody(
+            aMultipart()
+              .withName("test")
+              .withHeader("Content-Disposition", containing("""filename="test.txt""""))
+              .withHeader("Content-Type", equalTo("text/plain; charset=UTF-8"))
+              .withBody(equalTo(content))
+          )
+          .willReturn(
+            aResponse()
+              .withBody("""{"message":"Post OK"}""")
+              .withStatus(200)
+          )
+      )
+
+      When("a multipart/form-data POST request happens")
+      val bytes = content.getBytes(StandardCharsets.UTF_8)
+      val is = new ByteArrayInputStream(bytes)
+      val multipartFormPostResponse = client.rest.user.upload
+        .post(List(InputStreamPart("test", is, "test.txt", bytes.length)))
+        .asString
+
+      Then("we should get the correct response")
+      val putResponse = Await.result(multipartFormPostResponse, 2 seconds)
+      assertResult("""{"message":"Post OK"}""")(putResponse)
+    }
+
+    Scenario("test Lists as request and response body") {
 
       Given("a form upload web service")
 
@@ -439,7 +510,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(List(user))(listBody)
     }
 
-    scenario("test List as request with primitive type 'String'") {
+    Scenario("test List as request with primitive type 'String'") {
 
       Given("a form upload web service")
       val dogs = List(
@@ -469,7 +540,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(animals)(dogs)
     }
 
-    scenario("serializing a subclass directly should have the type dicriminator in its json format") {
+    Scenario("serializing a subclass directly should have the type dicriminator in its json format") {
 
       Given("a webservice that takes a post request")
       val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
@@ -493,7 +564,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(response.status)(201)
     }
 
-    scenario("test the use of a class hierarchy") {
+    Scenario("test the use of a class hierarchy") {
 
       Given("a web service providing a dog as an animal")
       val dogs = List(Dog(gender = "female", canBark = true, name = Some("Ziva")))
@@ -519,7 +590,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(animal)(dogs)
     }
 
-    scenario("test the use generic classes") {
+    Scenario("test the use generic classes") {
 
       Given("a web service providing the dogs of a user")
       val dog = Dog(gender = "female", canBark = true, name = Some("Ziva"))
@@ -552,7 +623,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
-    scenario("get a tree structure") {
+    Scenario("get a tree structure") {
 
       Given("a service that returns a tree structure")
 
@@ -578,7 +649,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(expectedTree)(receivedTree)
     }
 
-    scenario("binary upload using a file") {
+    Scenario("binary upload using a file") {
 
       Given("a service receives binary data")
 
@@ -601,7 +672,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(response.status)
     }
 
-    scenario("binary upload using an inputstream") {
+    Scenario("binary upload using an inputstream") {
 
       Given("a service receives binary data")
 
@@ -624,7 +695,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(response.status)
     }
 
-    scenario("binary upload using a byte array") {
+    Scenario("binary upload using a byte array") {
 
       Given("a service receives binary data")
 
@@ -650,7 +721,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(response.status)
     }
 
-    scenario("binary upload using a string") {
+    Scenario("binary upload using a string") {
 
       Given("a service receives binary data")
 
@@ -674,7 +745,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(200)(response.status)
     }
 
-    scenario("download binary data") {
+    Scenario("download binary data") {
 
       Given("a service responds with binary data")
 
@@ -697,7 +768,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     }
 
 
-    scenario("download binary data but response is failed") {
+    Scenario("download binary data but response is failed") {
 
       Given("a service responds with binary data")
 
@@ -724,12 +795,12 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  // - - - Tests using RAML 1.0 features start here
+  // - - - Tests using RAML 1.0 Features start here
 
-  feature("Use the DSL based on a RAML 1.0 specification") {
+  Feature("Use the DSL based on a RAML 1.0 specification") {
 
     // Regular Book
-    scenario("test a GET request to get a Book list (the base class of a hierarchy)") {
+    Scenario("test a GET request to get a Book list (the base class of a hierarchy)") {
 
       Given("a web service that returns a list of books")
       val booksResource = client.books
@@ -742,7 +813,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
             .withStatus(200)))
 
       When("we request the list of books")
-      val futureBooks = booksResource.get.asType
+      val futureBooks = booksResource.get().asType
       val books: List[Book] = Await.result(futureBooks, 2 seconds)
 
       Then("we should get the expected books")
@@ -774,7 +845,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
-    scenario("test a POST request with a Book (the base class of a hierarchy)") {
+    Scenario("test a POST request with a Book (the base class of a hierarchy)") {
 
       Given("a web service that receives a list of books")
       val booksResource = client.books
@@ -802,7 +873,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     }
 
     // Comic Book
-    scenario("test a GET request to get a ComicBook list (a non-leaf subclass in a class hierarchy)") {
+    Scenario("test a GET request to get a ComicBook list (a non-leaf subclass in a class hierarchy)") {
 
       Given("a web service that returns a list of comic books")
       val comicBooksResource = client.books.comicbooks
@@ -815,7 +886,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
             .withStatus(200)))
 
       When("we request the list of comic books")
-      val futureBooks = comicBooksResource.get.asType
+      val futureBooks = comicBooksResource.get().asType
       val books: List[ComicBook] = Await.result(futureBooks, 2 seconds)
 
       Then("we should get the expected comic books")
@@ -823,7 +894,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
-    scenario("test a POST request with a ComicBook (a non-leaf subclass in a class hierarchy)") {
+    Scenario("test a POST request with a ComicBook (a non-leaf subclass in a class hierarchy)") {
 
       Given("a web service that receives a list of comic books")
       val comicBooksResource = client.books.comicbooks
@@ -859,7 +930,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
     }
 
     // SciFi Comic Book
-    scenario("test a GET request to get a SciFi ComicBook list (a leaf subclass in a class hierarchy)") {
+    Scenario("test a GET request to get a SciFi ComicBook list (a leaf subclass in a class hierarchy)") {
 
       Given("a web service that returns a list of comic books")
       val scifiComicBooksResource = client.books.comicbooks.scificomicbooks
@@ -872,7 +943,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
             .withStatus(200)))
 
       When("we request the list of scifi comic books")
-      val futureBooks = scifiComicBooksResource.get.asType
+      val futureBooks = scifiComicBooksResource.get().asType
       val books: List[ComicBook] = Await.result(futureBooks, 2 seconds)
 
       Then("we should get the expected comic books")
@@ -880,7 +951,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
     }
 
-    scenario("test a POST request with a SciFi ComicBook (a leaf subclass in a class hierarchy)") {
+    Scenario("test a POST request with a SciFi ComicBook (a leaf subclass in a class hierarchy)") {
 
       Given("a web service that receives a list of comic books")
       val scifiComicBooksResource = client.books.comicbooks.scificomicbooks
@@ -918,9 +989,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("Test serialization and deserialization of an empty object") {
+  Feature("Test serialization and deserialization of an empty object") {
 
-    scenario("deserialization of a given object that contains a field that points to an empty object") {
+    Scenario("deserialization of a given object that contains a field that points to an empty object") {
 
       Given("a service providing a response with an empty object field")
 
@@ -941,7 +1012,7 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
       assertResult(JsNumber(123))(emptyObjectField.data.value("anything"))
     }
 
-    scenario("serialization of a given object that contains a field that points to an empty object") {
+    Scenario("serialization of a given object that contains a field that points to an empty object") {
 
       Given("a service expecting a body with an empty object field")
 
@@ -970,9 +1041,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("A plain string post body should serialize without extra quotes.") {
+  Feature("A plain string post body should serialize without extra quotes.") {
 
-    scenario("serialization of a string post body") {
+    Scenario("serialization of a string post body") {
 
       Given("a service expecting a body with a simple string value")
 
@@ -998,9 +1069,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("Complex query parameter types should be serialized to json") {
+  Feature("Complex query parameter types should be serialized to json") {
 
-    scenario("An enumeration as query parameter type should serialize as its string value") {
+    Scenario("An enumeration as query parameter type should serialize as its string value") {
 
       Given("a service expecting an enumeration type as query parameter")
 
@@ -1030,9 +1101,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("queryString parameters as named type should be serialized a reqular query parameters") {
+  Feature("queryString parameters as named type should be serialized a reqular query parameters") {
 
-    scenario("a typed queryString must be transformed into regular query parameters") {
+    Scenario("a typed queryString must be transformed into regular query parameters") {
 
       Given("a service expecting some query parameters")
 
@@ -1051,9 +1122,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("request an object that contains different types of date fields") {
+  Feature("request an object that contains different types of date fields") {
 
-    scenario("a service that returns an object with different types of date field") {
+    Scenario("a service that returns an object with different types of date field") {
 
       Given("a service returning an object containing different sorts of date fields")
       stubFor(
@@ -1081,9 +1152,9 @@ class RamlModelGeneratorTest extends FeatureSpec with GivenWhenThen with BeforeA
 
   }
 
-  feature("#141 (bugfix) we send and receive an object with 23 fields, then that must not fail") {
+  Feature("#141 (bugfix) we send and receive an object with 23 fields, then that must not fail") {
 
-    scenario("we use a service that receives and returns an object with 23 fields") {
+    Scenario("we use a service that receives and returns an object with 23 fields") {
 
       Given("a service that receives and returns an object with 23 fields")
 
