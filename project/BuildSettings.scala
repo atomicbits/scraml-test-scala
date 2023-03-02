@@ -7,9 +7,8 @@ object BuildSettings {
 
   val snapshotSuffix = "-SNAPSHOT"
 
-  val Version = "0.9.1" + snapshotSuffix
+  val Version = "0.9.1" //+ snapshotSuffix
 
-  // val ScalaVersion = "2.12.10"
   val ScalaVersion = "2.13.10"
 
   val scalacBuildOptions = Seq(
