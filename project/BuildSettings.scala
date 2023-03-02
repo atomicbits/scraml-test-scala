@@ -19,8 +19,7 @@ object BuildSettings {
     "-encoding",
     "UTF-8",
     "-release:11",
-    "-Xfatal-warnings",
-    "-Wconf:src=src_managed/.*:silent" // https://stackoverflow.com/questions/22722449/how-to-make-sbt-not-reporting-compilation-warnings-for-generated-code
+    "-Xfatal-warnings"
   )
 
   def projSettings(dependencies: Seq[ModuleID]) = {
