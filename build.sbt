@@ -16,12 +16,11 @@ lazy val helloWorldApi = Project(
 ).settings(
   projSettings(scramlDeps ++ testDeps) ++
     Seq(
-      scramlRamlApi in scraml in Compile := "helloworld/helloworld.raml", // the path to the main raml file of the api
-      scramlBaseDir in scraml in Compile :=
-        file("modules/raml-examples/src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
-      scramlLanguage in scraml in Compile := "scala", // this is the default in the sbt plugin, so can be omitted
-      scramlApiPackage in scraml in Compile := "org.raml.examples.helloworld", // our path to the main raml file is too short to use it as a package name (helloworld/helloworld.raml), so we have to declare our own package name
-      scramlClassHeader in scraml in Compile := scramlFileHeader
+      Compile / scraml / scramlRamlApi := "helloworld/helloworld.raml", // the path to the main raml file of the api
+      Compile / scraml / scramlBaseDir := file("modules/raml-examples/src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
+      Compile / scraml / scramlLanguage := "scala", // this is the default in the sbt plugin, so can be omitted
+      Compile / scraml / scramlApiPackage := "org.raml.examples.helloworld", // our path to the main raml file is too short to use it as a package name (helloworld/helloworld.raml), so we have to declare our own package name
+      Compile / scraml / scramlClassHeader := scramlFileHeader
     )
 )
 
@@ -31,14 +30,13 @@ lazy val ramlTypescript = Project(
 ).settings(
   projSettings(scramlDeps ++ testDeps) ++
     Seq(
-      scramlRamlApi in scraml in Compile := "io/atomicbits/raml10/RamlTestClient.raml", // the path to the main raml file of the api
-      scramlBaseDir in scraml in Compile :=
-        file("src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
-      scramlLanguage in scraml in Compile := "TypeScript",
-      scramlApiPackage in scraml in Compile := "io.atomicbits", // our path to the main raml file is too short to use it as a package name (helloworld/helloworld.raml), so we have to declare our own package name
-      scramlClassHeader in scraml in Compile := scramlFileHeader,
-      scramlDestinationDir in scraml in Compile := file("modules/raml-typescript/src/public"),
-      scramlSingleSourceFile in scraml in Compile := "helloworld.d.ts"
+      Compile / scraml / scramlRamlApi := "io/atomicbits/raml10/RamlTestClient.raml", // the path to the main raml file of the api
+      Compile / scraml / scramlBaseDir := file("src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
+      Compile / scraml / scramlLanguage := "TypeScript",
+      Compile / scraml / scramlApiPackage := "io.atomicbits", // our path to the main raml file is too short to use it as a package name (helloworld/helloworld.raml), so we have to declare our own package name
+      Compile / scraml / scramlClassHeader := scramlFileHeader,
+      Compile / scraml / scramlDestinationDir := file("modules/raml-typescript/src/public"),
+      Compile / scraml / scramlSingleSourceFile := "helloworld.d.ts"
     )
 )
 
@@ -48,12 +46,11 @@ lazy val ramlHtmlDoc = Project(
 ).settings(
   projSettings(scramlDeps) ++
     Seq(
-      scramlRamlApi in scraml in Compile := "io/atomicbits/raml10/RamlTestClient.raml", // the path to the main raml file of the api
-      scramlBaseDir in scraml in Compile :=
-        file("src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
-      scramlLanguage in scraml in Compile := "HtmlDoc",
-      scramlClassHeader in scraml in Compile := "",
-      scramlDestinationDir in scraml in Compile := file("modules/raml-htmldoc/src/public")
+      Compile / scraml / scramlRamlApi := "io/atomicbits/raml10/RamlTestClient.raml", // the path to the main raml file of the api
+      Compile / scraml / scramlBaseDir := file("src/main/resources").absolutePath, // omit when the raml files are in the module's own resources folder
+      Compile / scraml / scramlLanguage := "HtmlDoc",
+      Compile / scraml / scramlClassHeader := "",
+      Compile / scraml / scramlDestinationDir := file("modules/raml-htmldoc/src/public")
     )
 )
 
@@ -64,7 +61,7 @@ lazy val root = Project(
 ).settings(
   projSettings(scramlDeps ++ testDeps) ++
     Seq(
-      scramlRamlApi in scraml in Compile := "io/atomicbits/raml10/RamlTestClient.raml",
-      scramlClassHeader in scraml in Compile := scramlFileHeader
+      Compile / scraml / scramlRamlApi := "io/atomicbits/raml10/RamlTestClient.raml",
+      Compile / scraml / scramlClassHeader := scramlFileHeader
     )
 ).aggregate(helloWorldApi, ramlTypescript, ramlHtmlDoc)

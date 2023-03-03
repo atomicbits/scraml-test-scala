@@ -1,9 +1,9 @@
 language: scala
 scala:
-- 2.11.7
+- 2.13.10
 script: sbt clean test
 jdk:
-- oraclejdk8
+- openjdk11
 notifications:
   email:
     recipients:
