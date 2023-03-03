@@ -1,0 +1,2380 @@
+[0m[[0minfo[0m] [0mLoading global plugins from /Users/peter/.sbt/0.13/plugins[0m
+[0m[[33mwarn[0m] [0mMultiple resolvers having different access mechanism configured with same name 'sbt-plugin-releases'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).[0m
+[0m[[0minfo[0m] [0mUpdating {file:/Users/peter/.sbt/0.13/plugins/}global-plugins...[0m
+[0m[[0minfo[0m] [0mResolving net.virtual-void#sbt-dependency-graph;0.7.5 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.github.mdr#ascii-graphs_2.10;0.0.3 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#sbt;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#main;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#actions;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#classpath;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-compiler;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#interface;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#io;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#control;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#launcher-interface;1.0.0-M1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#completion;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#collections;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving jline#jline;2.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.11 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#api;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#classfile;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#logging;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#process;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compiler-integration;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#incremental-compiler;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#relation;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compile;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#persist;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-tools.sbinary#sbinary_2.10;0.4.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compiler-ivy-integration;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#ivy;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#cross;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt.ivy#ivy;2.3.0-sbt-2cf13e211b2cb31f0d3b317289dca70eca3362f6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.jcraft#jsch;0.1.50 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#serialization_2.10;0.1.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang.modules#scala-pickling_2.10;0.10.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scalamacros#quasiquotes_2.10;2.0.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.json4s#json4s-core_2.10;3.2.10 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.json4s#json4s-ast_2.10;3.2.10 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.thoughtworks.paranamer#paranamer;2.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.spire-math#jawn-parser_2.10;0.6.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.spire-math#json4s-support_2.10;0.6.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#run;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#task-system;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#tasks;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#tracking;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#cache;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#testing;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#test-agent;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#test-interface;1.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#main-settings;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#apply-macro;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#command;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#template-resolver;0.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#logic;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compiler-interface;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#jline;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.4 ...[0m
+[0m[[0minfo[0m] [0mDone updating.[0m
+[0m[[0minfo[0m] [0mLoading project definition from /Users/peter/Projects/scraml-test-scala/project[0m
+[0m[[33mwarn[0m] [0mMultiple resolvers having different access mechanism configured with same name 'sbt-plugin-releases'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).[0m
+[0m[[0minfo[0m] [0mUpdating {file:/Users/peter/Projects/scraml-test-scala/project/}scraml-test-scala-build...[0m
+[0m[[0minfo[0m] [0mResolving org.scala-sbt#global-plugins;0.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving net.virtual-void#sbt-dependency-graph;0.7.5 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.github.mdr#ascii-graphs_2.10;0.0.3 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-sbt-plugin;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-sbt-plugin;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-generator_2.10;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-generator_2.10;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-raml-parser_2.10;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-raml-parser_2.10;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.typesafe.play#play-json_2.10;2.6.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.typesafe.play#play-functional_2.10;2.6.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.typelevel#macro-compat_2.10;1.1.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scalamacros#quasiquotes_2.10;2.1.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving joda-time#joda-time;2.9.9 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.core#jackson-core;2.8.9 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.core#jackson-annotations;2.8.9 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.core#jackson-databind;2.8.9 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.datatype#jackson-datatype-jdk8;2.8.9 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.datatype#jackson-datatype-jsr310;2.8.9 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.yaml#snakeyaml;1.16 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.slf4j#slf4j-api;1.7.12 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-dsl-scala_2.10;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-dsl-scala_2.10;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-dsl-java;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-dsl-java;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-dsl-android;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving io.atomicbits#scraml-dsl-android;0.8.2-SNAPSHOT ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scalariform#scalariform_2.10;0.2.3 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.google.googlejavaformat#google-java-format;1.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.google.guava#guava;19.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.google.errorprone#javac;9-dev-r3297-1-shaded ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.github.spullara.mustache.java#compiler;0.9.5 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#sbt;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#main;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#actions;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#classpath;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-compiler;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#interface;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#io;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#control;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#launcher-interface;1.0.0-M1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#completion;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#collections;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving jline#jline;2.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.11 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#api;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#classfile;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#logging;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#process;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compiler-integration;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#incremental-compiler;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#relation;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compile;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#persist;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-tools.sbinary#sbinary_2.10;0.4.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compiler-ivy-integration;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#ivy;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#cross;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt.ivy#ivy;2.3.0-sbt-2cf13e211b2cb31f0d3b317289dca70eca3362f6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.jcraft#jsch;0.1.50 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#serialization_2.10;0.1.2 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang.modules#scala-pickling_2.10;0.10.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scalamacros#quasiquotes_2.10;2.0.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.json4s#json4s-core_2.10;3.2.10 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.json4s#json4s-ast_2.10;3.2.10 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving com.thoughtworks.paranamer#paranamer;2.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.spire-math#jawn-parser_2.10;0.6.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.spire-math#json4s-support_2.10;0.6.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#run;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#task-system;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#tasks;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#tracking;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#cache;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#testing;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#test-agent;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#test-interface;1.0 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#main-settings;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#apply-macro;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#command;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#template-resolver;0.1 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#logic;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-sbt#compiler-interface;0.13.13 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.scala-lang#jline;2.10.6 ...[0m
+[A[2K[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.4 ...[0m
+[0m[[0minfo[0m] [0mDone updating.[0m
+[0m[[0minfo[0m] [0mSet current project to scraml-test-scala (in build file:/Users/peter/Projects/scraml-test-scala/)[0m
+Regenerating HtmlDoc client from /Users/peter/Projects/scraml-test-scala/src/main/resources to modules/raml-htmldoc/src/public
+Regenerating scala client from /Users/peter/Projects/scraml-test-scala/modules/raml-examples/src/main/resources to /Users/peter/Projects/scraml-test-scala/modules/raml-examples-helloworld/target/scala-2.11/src_managed/main
+Regenerating TypeScript client from /Users/peter/Projects/scraml-test-scala/src/main/resources to modules/raml-typescript/src/public
+Regenerating  client from /Users/peter/Projects/scraml-test-scala/src/main/resources to /Users/peter/Projects/scraml-test-scala/target/scala-2.11/src_managed/main
+Generating client for platform HTML Documentation.
+Generating client for platform TypeScript.
+Generating client for platform Scala Play.
+Generating client for platform Scala Play.
+Free Scraml license used by Atomic BITS.
+Free Scraml license used by Atomic BITS.
+Free Scraml license used by Atomic BITS.
+Free Scraml license used by Atomic BITS.
+Running RAML model generation
+Running RAML model generation
+Running RAML model generation
+Running RAML model generation
+RAML model generated
+RAML model generated
+RAML model generated
+RAML model generated
+Processing class ClientDocModel
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class BodyContent
+Processing class ActualMediaType
+Processing class Some
+Processing class TypeRepresentation
+Processing class ParsedTypeReference
+Processing class NativeId
+Processing class Fragments
+Processing class Some
+Processing class NonPrimitiveTypeReference
+Processing class RealCanonicalName
+Processing class Parameters
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class BodyContent
+Processing class ActualMediaType
+Processing class Some
+Processing class TypeRepresentation
+Processing class ParsedTypeReference
+Processing class NativeId
+Processing class Fragments
+Processing class Some
+Processing class NonPrimitiveTypeReference
+Processing class RealCanonicalName
+Processing class Parameters
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class BodyContent
+Processing class ActualMediaType
+Processing class Some
+Processing class TypeRepresentation
+Processing class ParsedTypeReference
+Processing class NativeId
+Processing class Fragments
+Processing class Some
+Processing class NonPrimitiveTypeReference
+Processing class RealCanonicalName
+Processing class Parameters
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class Responses
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class BodyContent
+Processing class ActualMediaType
+Processing class Some
+Processing class TypeRepresentation
+Processing class ParsedTypeReference
+Processing class NativeId
+Processing class Fragments
+Processing class Some
+Processing class NonPrimitiveTypeReference
+Processing class RealCanonicalName
+Processing class Parameters
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class CombinedResource
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class Responses
+Processing class Response
+Processing class StatusCode
+Processing class Parameters
+Processing class Body
+Processing class SimpleAction
+Processing class Parameters
+Processing class Parameters
+Processing class SimpleBody
+Processing class BodyContent
+Processing class ActualMediaType
+Processing class Some
+Processing class TypeRepresentation
+Processing class ParsedArray
+Processing class ParsedTypeReference
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+Processing class RootId
+java.lang.StackOverflowError
+	at java.lang.Class.getEnclosingMethodInfo(Class.java:1072)
+	at java.lang.Class.getEnclosingClass(Class.java:1272)
+	at java.lang.Class.getSimpleBinaryName(Class.java:1443)
+	at java.lang.Class.getSimpleName(Class.java:1309)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:76)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+	at scala.collection.IndexedSeqOptimized$class.foldLeft(IndexedSeqOptimized.scala:60)
+	at scala.collection.mutable.ArrayOps$ofRef.foldLeft(ArrayOps.scala:108)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.toJavaMap(IndexDocGenerator.scala:79)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$.io$atomicbits$scraml$generator$platform$htmldoc$IndexDocGenerator$$mapValue$1(IndexDocGenerator.scala:71)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:82)
+	at io.atomicbits.scraml.generator.platform.htmldoc.IndexDocGenerator$$anonfun$toJavaMap$1.apply(IndexDocGenerator.scala:79)
+	at scala.collection.IndexedSeqOptimized$class.foldl(IndexedSeqOptimized.scala:51)
+[0m[[31merror[0m] [0m(raml-htmldoc/compile:[31mscraml[0m) java.lang.StackOverflowError[0m
+[0m[[31merror[0m] [0mTotal time: 3 s, completed Jun 6, 2018 12:45:38 PM[0m
